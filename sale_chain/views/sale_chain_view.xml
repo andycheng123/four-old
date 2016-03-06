@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_sale_store_tree" model="ir.ui.view">
+            <field name="name">sale.store.tree</field>
+            <field name="model">sale.store</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Sale Store">
+                    <field name="ref"/>
+                    <field name="name"/>
+                    <field name="user_id"/>
+                    <field name="street" string="Address"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sale_store_form" model="ir.ui.view">
+            <field name="name">sale.store.form</field>
+            <field name="model">sale.store</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Sale Store">
+                    <sheet>
+                        <field name="image" widget='image' class="oe_avatar oe_left" options='{"preview_image": "image_medium"}'/>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                            <field name="ref" placeholder="Code..."/>
+                            <field name="company_id" placeholder="Company" groups="base.group_multi_company"/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="warehouse_id"/>
+                                <field name="user_id"/>
+                                <field name="street" string="Address"/>
+                            </group>
+                            <group>
+                                <field name="phone"/>
+                                <field name="mobile"/>
+                                <field name="fax"/>
+                                <field name="email"/>
+                            </group>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Members">
+                                <field name="member_ids"/>
+                            </page>
+                            <page string="Notes">
+                                <field name="comment"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_sale_store_search" model="ir.ui.view">
+            <field name="name">sale.store.search</field>
+            <field name="model">sale.store</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Sale Store">
+                    <field name="name"/>
+                    <field name="ref"/>
+                    <group expand="0" string="Group By">
+                        <filter name="gCompany" string="Company" groups="base.group_multi_company" domain="[]" context="{'group_by': 'company_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_open_sale_store_view">
+            <field name="name">Sale Store</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.store</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_sale_store_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_sale_store"
+                  parent="base.menu_base_config"
+                  sequence="20"
+                  action="act_open_sale_store_view"
+                  groups="base.group_sale_manager"
+                />
+
+        <!-- Update user form !-->
+        <record model="ir.ui.view" id="res_user_form">
+            <field name="name">Users Preferences</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='tz']" position="after">
+                        <field name="default_store_id"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        <!-- Update Preferences form !-->
+        <record id="view_users_form_preferences" model="ir.ui.view">
+            <field name="name">res.users.preferences.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='company_id']" position="before">
+                        <field name="default_store_id" readonly="0"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

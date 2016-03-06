@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="sequence_purchase_receive" model="ir.sequence">
+            <field name="name">seq.purchase.receive</field>
+            <field name="prefix">REC</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+    </data>
+</openerp>

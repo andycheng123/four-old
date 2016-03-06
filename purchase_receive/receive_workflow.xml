@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="workflow" id="wkf_0">
+            <field name="name">Purchase Receive Basic</field>
+            <field name="osv">purchase.receive</field>
+            <field name="on_create">True</field>
+        </record>
+
+        <!--activities-->
+        <record id="act_draft" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_0"/>
+            <field name="name">draft</field>
+            <field name="flow_start">True</field>
+        </record>
+
+        <record id="act_confirmed" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_0"/>
+            <field name="name">confirmed</field>
+            <field name="kind">function</field>
+            <field name="action">confirm()</field>
+        </record>
+
+        <record id="act_except_receive" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_0"/>
+            <field name="name">except_receive</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'except_receive'})</field>
+        </record>
+
+        <record id="act_received" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_0"/>
+            <field name="name">received</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'manual'})</field>
+        </record>
+
+        <record id="act_invoice" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_0"/>
+            <field name="name">invoice</field>
+            <field name="kind">subflow</field>
+            <field name="subflow_id" search="[('osv','=','account.invoice')]"/>
+            <field name="action">wkf_invoice_created()</field>
+        </record>
+
+        <record id="act_except_invoice" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_0"/>
+            <field name="name">except_invoice</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'except_invoice'})</field>
+        </record>
+
+        <record id="act_done" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_0"/>
+            <field name="name">done</field>
+            <field name="kind">function</field>
+            <field name="action">wkf_receive_done()</field>
+            <field name="flow_stop">True</field>
+        </record>
+
+        <record id="act_cancel" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_0"/>
+            <field name="name">cancel</field>
+            <field name="kind">function</field>
+            <field name="action">wkf_receive_cancel()</field>
+        </record>
+
+        <!-- transations -->
+        <record id="trans_confirm" model="workflow.transition">
+            <field name="act_from" ref="act_draft"/>
+            <field name="act_to" ref="act_confirmed"/>
+            <field name="signal">confirm</field>
+        </record>
+        <record id="trans_receive_except" model="workflow.transition">
+            <field name="act_from" ref="act_confirmed"/>
+            <field name="act_to" ref="act_except_receive"/>
+            <field name="condition">test_receive_except()</field>
+        </record>
+        <record id="trans_ignore_receive" model="workflow.transition">
+            <field name="act_from" ref="act_except_receive"/>
+            <field name="act_to" ref="act_received"/>
+            <field name="signal">ignore_receive</field>
+        </record>
+        <record id="trans_except_receive_cancel" model="workflow.transition">
+            <field name="act_from" ref="act_except_receive"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">receive_cancel</field>
+        </record>
+        <record id="trans_draft_cancel" model="workflow.transition">
+            <field name="act_from" ref="act_draft"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record id="trans_confirm_cancel" model="workflow.transition">
+            <field name="act_from" ref="act_confirmed"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record id="trans_receive" model="workflow.transition">
+            <field name="act_from" ref="act_confirmed"/>
+            <field name="act_to" ref="act_received"/>
+            <field name="condition">test_received()</field>
+        </record>
+        <record id="trans_invoice" model="workflow.transition">
+            <field name="act_from" ref="act_received"/>
+            <field name="act_to" ref="act_invoice"/>
+            <field name="signal">invoice_created</field>
+        </record>
+        <record id="trans_invoice_except_invoice" model="workflow.transition">
+            <field name="act_from" ref="act_invoice"/>
+            <field name="act_to" ref="act_except_invoice"/>
+            <field name="signal">subflow.cancel</field>
+        </record>
+        <record id="trans_invoice_invoice_done" model="workflow.transition">
+            <field name="act_from" ref="act_invoice"/>
+            <field name="act_to" ref="act_done"/>
+            <field name="signal">subflow.paid</field>
+        </record>
+        <record id="trans_except_invoice_invoice" model="workflow.transition">
+            <field name="act_from" ref="act_except_invoice"/>
+            <field name="act_to" ref="act_received"/>
+            <field name="signal">re_invoice</field>
+        </record>
+        <record id="trans_except_invoice_cancel" model="workflow.transition">
+            <field name="act_from" ref="act_except_invoice"/>
+            <field name="act_to" ref="act_done"/>
+            <field name="signal">invoice_cancel</field>
+        </record>
+
+    </data>
+</openerp>

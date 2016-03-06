@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <function model="res.partner" name="update_all_last_purchase_order"></function>
+
+    </data>
+</openerp>

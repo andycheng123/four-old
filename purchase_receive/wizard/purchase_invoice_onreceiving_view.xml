@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_purchase_invoice_onreceiving" model="ir.ui.view">
+            <field name="name">Purchase Invoice Onreceiving</field>
+            <field name="model">purchase.invoice.onreceiving</field>
+            <field name="arch" type="xml">
+                <form string="Create invoice">
+                    <h1>
+                        <label for="journal_id" string="进货发票"/>
+                    </h1>
+                    <group>
+                        <field name="journal_id" />
+                        <field name="invoice_date" />
+                        <field name="supplier_invoice_number"/>
+                    </group>
+                    <footer>
+                        <button name="create_invoice" string="立账" type="object" class="oe_highlight"/>
+                        or
+                        <button name="open_invoice" string="立账并检视发票" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="立账及发票"
+                    res_model="purchase.invoice.onreceiving"
+                    src_model="purchase.receive"
+                    key2="client_action_multi"
+                    multi="True"
+                    view_mode="form"
+                    view_type="form"
+                    target="new"
+                    id="action_purchase_invoice_onreceiving"/>
+
+    </data>
+</openerp>

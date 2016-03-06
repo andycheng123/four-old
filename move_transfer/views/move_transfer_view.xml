@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="move_transfer_view_tree" model="ir.ui.view">
+            <field name="name">move.transfer.tree</field>
+            <field name="model">move.transfer</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Move Transfer" colors="grey:state=='cancel';blue:state=='delivered';blue:state=='draft'">
+                    <field name="name"/>
+                    <field name="store_id"/>
+                    <field name="date_move"/>
+                    <field name="date_deliver"/>
+                    <field name="date_receive"/>
+                    <field name="location_id"/>
+                    <field name="location_dest_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="move_transfer_view_form" model="ir.ui.view">
+            <field name="name">move.transfer.form</field>
+            <field name="model">move.transfer</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Move Transfer">
+                    <header>
+                        <button string="確認出貨"  states="draft" type="object" name="action_deliver" class="oe_highlight"/>
+                        <button string="確認收貨"  states="delivered" type="object" name="action_confirm" class="oe_highlight"/>
+                        <button string="取消"  states="delivered" type="object" name="action_cancel_deliver"/>
+                        <button string="取消"  states="done" type="object" name="action_cancel"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,delivered,done" statusbar_colors="{'cancel':'red'}"/>
+                    </header>
+                    <sheet>
+                        <group col="4">
+                            <group>
+                                 <field name="name"/>
+                                 <field name="store_id"/>
+                                 <field name="location_id"/>
+                            </group>
+                            <group>
+                                <field name="date_move"/>
+                                <field name="date_deliver"/>
+                                <field name="date_receive"/>
+                                <field name="location_dest_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page>
+                                <button name='%(open_move_transfer_ziward_action)d' type='action' string='加明細' states="draft"/>
+                                <field name="line_ids">
+                                    <tree string="調撥明細" editable="bottom">
+                                        <field name="sequence"/>
+                                        <field name="product_id"/>
+                                        <field name="product_uom_id" groups="product.group_uom"/>
+                                        <field name="product_qty" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="move_transfer_view_search" model="ir.ui.view">
+            <field name="name">move.transfer.search</field>
+            <field name="model">move.transfer</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Search Move Transfer">
+                    <field name="name" select="True"/>
+                    <field name="store_id"/>
+                    <field name="location_id"/>
+                    <field name="location_dest_id"/>
+                    <field name="date_move"/>
+                    <filter string="今日應出貨" domain="['&amp;', ('date_move', '&lt;=', time.strftime('%Y-%m-%d')), ('state','=','draft')]" name="today_transfer_filter"/>
+                    <group string="狀態">
+                        <filter string="待出貨" domain="[('state','=','draft')]" name="draft_transfer_filter"/>
+                        <filter string="待收貨" domain="[('state','=','delivered')]" name="delivered_transfer_filter"/>
+                        <filter string="已完成" domain="[('state','=','done')]" name="done_transfer_filter"/>
+                        <filter string="已取消" domain="[('state','=','cancel')]" name="cancel_transfer_filter"/>
+                    </group>
+                    <group string="門市">
+                        <filter string="總公司" domain="[('store_id', '=', 7)]" name="store_7_transfer_filter"/>
+                        <filter string="大安店" domain="[('store_id', '=', 8)]" name="store_8_transfer_filter"/>
+                        <filter string="晶華店" domain="[('store_id', '=', 9)]" name="store_9_transfer_filter"/>
+                        <filter string="民生店" domain="[('store_id', '=', 10)]" name="store_10_transfer_filter"/>
+                        <filter string="仁愛店" domain="[('store_id', '=', 11)]" name="store_11_transfer_filter"/>
+                        <filter string="永康店" domain="[('store_id', '=', 12)]" name="store_12_transfer_filter"/>
+                    </group>
+                    <group expand="1" string="分組">
+                        <filter string="開單門店" domain="[]" context="{'group_by':'store_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="move_transfer_action">
+            <field name="name">調撥單</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">move.transfer</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="move_transfer_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <!-- Server action for action deliver for multiple entries -->
+        <record model="ir.actions.server" id="action_deliver">
+            <field name="name">確認出貨</field>
+            <field name="model_id" ref="model_move_transfer"/>
+            <field name="code">
+                self.action_deliver(cr, uid, context.get('active_ids', []), context=context)
+            </field>
+        </record>
+
+        <!-- Server action for action receive for multiple entries -->
+        <record model="ir.actions.server" id="action_confirm">
+            <field name="name">確認收貨</field>
+            <field name="model_id" ref="model_move_transfer"/>
+            <field name="code">
+                self.action_confirm(cr, uid, context.get('active_ids', []), context=context)
+            </field>
+        </record>
+
+        <!-- Set server actions to "More" menu -->
+        <record id="deliver_action" model="ir.values">
+            <field eval="'client_action_multi'" name="key2"/>
+            <field eval="'move.transfer'" name="model"/>
+            <field name="name">確認出貨</field>
+            <field eval="'ir.actions.server,%d'%action_deliver" name="value"/>
+        </record>
+        <record id="confirm_action" model="ir.values">
+            <field eval="'client_action_multi'" name="key2"/>
+            <field eval="'move.transfer'" name="model"/>
+            <field name="name">確認收貨</field>
+            <field eval="'ir.actions.server,%d'%action_confirm" name="value"/>
+        </record>
+
+        <menuitem id="menu_move_transfer"
+                  parent="stock.menu_stock_warehouse_mgmt"
+                  sequence="20"
+                  action="move_transfer_action"/>
+    </data>
+</openerp>

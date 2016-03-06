@@ -1,0 +1,479 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_receive
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-08 00:01+0000\n"
+"PO-Revision-Date: 2014-10-08 08:02+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: purchase_receive
+#: code:addons/purchase_receive/purchase.py:214
+#, python-format
+msgid "%s>>收货数量不允许超出订单数量, 已超出订单数量：%s, 最多只可以收货：%s"
+msgstr ""
+
+#. module: purchase_receive
+#: view:purchase.invoice.onreceiving:purchase_receive.view_purchase_invoice_onreceiving
+#: view:purchase.receive.select:purchase_receive.view_receive_select
+msgid "Cancel"
+msgstr "取消"
+
+#. module: purchase_receive
+#: view:purchase.invoice.onreceiving:purchase_receive.view_purchase_invoice_onreceiving
+msgid "Create invoice"
+msgstr "立賬"
+
+#. module: purchase_receive
+#: field:purchase.invoice.onreceiving,create_uid:0
+#: field:purchase.receive,create_uid:0
+#: field:purchase.receive.line,create_uid:0
+#: field:purchase.receive.select,create_uid:0
+#: field:purchase.receive.select.line,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.invoice.onreceiving,create_date:0
+#: field:purchase.receive,create_date:0
+#: field:purchase.receive.line,create_date:0
+#: field:purchase.receive.select,create_date:0
+#: field:purchase.receive.select.line,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: purchase_receive
+#: help:purchase.receive,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.receive,picking_type_id:0
+msgid "Deliver To"
+msgstr "運送到"
+
+#. module: purchase_receive
+#: field:purchase.receive.line,name:0
+msgid "Description"
+msgstr "說明"
+
+#. module: purchase_receive
+#: field:purchase.invoice.onreceiving,journal_id:0
+msgid "Destination Journal"
+msgstr "賬簿"
+
+#. module: purchase_receive
+#: field:purchase.receive,message_follower_ids:0
+msgid "Followers"
+msgstr ""
+
+#. module: purchase_receive
+#: help:purchase.receive,message_summary:0
+msgid ""
+"Holds the Chatter summary (number of messages, ...). This summary is "
+"directly in html format in order to be inserted in kanban views."
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.invoice.onreceiving,id:0 field:purchase.receive,id:0
+#: field:purchase.receive.line,id:0 field:purchase.receive.select,id:0
+#: field:purchase.receive.select.line,id:0
+msgid "ID"
+msgstr ""
+
+#. module: purchase_receive
+#: help:purchase.receive,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr ""
+
+#. module: purchase_receive
+#: help:purchase.receive,invoice_ids:0
+msgid "Invoice generated in a receive"
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.receive,invoice_ids:0
+msgid "Invoices"
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.receive,message_is_follower:0
+msgid "Is a Follower"
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.receive,message_last_post:0
+msgid "Last Message Date"
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.invoice.onreceiving,write_uid:0
+#: field:purchase.receive,write_uid:0 field:purchase.receive.line,write_uid:0
+#: field:purchase.receive.select,write_uid:0
+#: field:purchase.receive.select.line,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.invoice.onreceiving,write_date:0
+#: field:purchase.receive,write_date:0
+#: field:purchase.receive.line,write_date:0
+#: field:purchase.receive.select,write_date:0
+#: field:purchase.receive.select.line,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: purchase_receive
+#: view:purchase.receive.select:purchase_receive.view_receive_select
+msgid "Lines"
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.receive,message_ids:0
+msgid "Messages"
+msgstr ""
+
+#. module: purchase_receive
+#: help:purchase.receive,message_ids:0
+msgid "Messages and communication history"
+msgstr ""
+
+#. module: purchase_receive
+#: code:addons/purchase_receive/wizard/purchase_invoice_onreceiving.py:40
+#, python-format
+msgid "No invoice created!"
+msgstr ""
+
+#. module: purchase_receive
+#: code:addons/purchase_receive/wizard/purchase_invoice_onreceiving.py:33
+#, python-format
+msgid "None of these picking lists require invoicing."
+msgstr ""
+
+#. module: purchase_receive
+#: code:addons/purchase_receive/purchase.py:186
+#, python-format
+msgid "Please create Invoices."
+msgstr ""
+
+#. module: purchase_receive
+#: model:ir.model,name:purchase_receive.model_purchase_order
+msgid "Purchase Order"
+msgstr ""
+
+#. module: purchase_receive
+#: model:ir.model,name:purchase_receive.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr ""
+
+#. module: purchase_receive
+#: model:ir.actions.act_window,name:purchase_receive.act_open_purchase_receive_view
+#: model:ir.ui.menu,name:purchase_receive.menu_purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+#: view:purchase.receive:purchase_receive.view_purchase_receive_search
+#: view:purchase.receive:purchase_receive.view_purchase_receive_tree
+msgid "Purchase Receive"
+msgstr "採購進貨"
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+msgid "Purchase Receive Lines"
+msgstr "採購進貨明細"
+
+#. module: purchase_receive
+#: view:purchase.receive.select:purchase_receive.view_receive_select
+msgid "Select Receive lines"
+msgstr "選擇進貨明細"
+
+#. module: purchase_receive
+#: model:ir.model,name:purchase_receive.model_stock_move
+msgid "Stock Move"
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.receive,message_summary:0
+msgid "Summary"
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.invoice.onreceiving,supplier_invoice_number:0
+msgid "Supplier Invoice Number"
+msgstr "供應商發票"
+
+#. module: purchase_receive
+#: help:purchase.invoice.onreceiving,supplier_invoice_number:0
+msgid "The reference of this invoice as provided by the supplier."
+msgstr ""
+
+#. module: purchase_receive
+#: help:purchase.receive,picking_type_id:0
+msgid "This will determine picking type of incoming shipment"
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.receive,message_unread:0
+msgid "Unread Messages"
+msgstr ""
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+msgid "不需立账"
+msgstr "不需立賬"
+
+#. module: purchase_receive
+#: field:purchase.receive.line,product_id:0
+msgid "产品"
+msgstr "產品"
+
+#. module: purchase_receive
+#: field:purchase.receive,partner_id:0
+msgid "供应商"
+msgstr "供應商"
+
+#. module: purchase_receive
+#: field:purchase.receive,name:0
+msgid "单据编号"
+msgstr "單據編號"
+
+#. module: purchase_receive
+#: selection:purchase.receive,state:0
+msgid "发票异常"
+msgstr "發票異常"
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+msgid "取消收货"
+msgstr "取消收貨"
+
+#. module: purchase_receive
+#: code:addons/purchase_receive/purchase.py:94
+#, python-format
+msgid "只允许删除草稿或已取消的单据。"
+msgstr "只允許刪除草稿或已取消的單據。"
+
+#. module: purchase_receive
+#: help:purchase.order.line,unreceive_qty:0
+msgid "可创建收货单的数量。订单数量-收货明细之和"
+msgstr ""
+
+#. module: purchase_receive
+#: field:purchase.order.line,unreceive_qty:0
+msgid "可收货数量"
+msgstr "可收貨數量"
+
+#. module: purchase_receive
+#: field:purchase.receive,notes:0
+msgid "备注说明"
+msgstr "備註說明"
+
+#. module: purchase_receive
+#: help:stock.move,receive_line_id:0
+msgid "如果当前移动是采购订单所产生的，此处呈现已创建的收货单之明细"
+msgstr ""
+
+#. module: purchase_receive
+#: selection:purchase.receive,state:0
+msgid "已取消"
+msgstr "已取消"
+
+#. module: purchase_receive
+#: selection:purchase.receive,state:0
+msgid "已完成"
+msgstr "已完成"
+
+#. module: purchase_receive
+#: help:purchase.invoice.onreceiving,invoice_date:0
+msgid "当前发票所立账的月份及日期"
+msgstr "當前發票所立賬的月分及日期"
+
+#. module: purchase_receive
+#: selection:purchase.receive,state:0
+msgid "待开发票"
+msgstr "待開發票"
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+msgid "忽略异常"
+msgstr "忽略異常"
+
+#. module: purchase_receive
+#: model:ir.actions.act_window,name:purchase_receive.open_receive_select
+msgid "打开采购订单选择"
+msgstr "開啓採購訂單選擇"
+
+#. module: purchase_receive
+#: help:purchase.receive.line,purchase_line_id:0
+msgid "按订单收货时，所对应的采购订单"
+msgstr "按訂單收貨時，所對應的採購訂單"
+
+#. module: purchase_receive
+#: help:purchase.order.line,receive_line_ids:0
+msgid "按订单收货时，订单的收货明细"
+msgstr "按訂單收貨時，訂單的收貨明細"
+
+#. module: purchase_receive
+#: help:purchase.receive.line,product_id:0
+msgid "接收的产品"
+msgstr "接收的產品"
+
+#. module: purchase_receive
+#: selection:purchase.receive,state:0
+msgid "收款中"
+msgstr "收款中"
+
+#. module: purchase_receive
+#: selection:purchase.receive,state:0
+msgid "收货中"
+msgstr "收貨中"
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+msgid "收货单"
+msgstr "收貨單"
+
+#. module: purchase_receive
+#: help:purchase.receive,state:0
+msgid ""
+"收货单的执行状态.\n"
+"* 收货中表示该单已经正式收效，正在执行具体收货过程，如已产生入库单\n"
+"* 待开发票表示该单已完成收货流程，等待供应提供发票立帐\n"
+"* 已完成表示已完成收货流程与完成立帐\n"
+"* 已取消未收货并未立帐的可以被取消或删除"
+msgstr ""
+
+#. module: purchase_receive
+#: selection:purchase.receive,state:0
+msgid "收货异常"
+msgstr "收貨異常"
+
+#. module: purchase_receive
+#: field:purchase.receive,date_receive:0
+msgid "收货日期"
+msgstr "收貨日期"
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+#: field:purchase.receive,line_ids:0 field:purchase.receive.select,line_ids:0
+#: field:stock.move,receive_line_id:0
+msgid "收货明细"
+msgstr "收貨明細"
+
+#. module: purchase_receive
+#: field:purchase.receive.line,product_qty:0
+msgid "数量"
+msgstr "數量"
+
+#. module: purchase_receive
+#: field:purchase.receive.select.line,select_qty:0
+msgid "本次收货数量"
+msgstr "本次收貨數量"
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+msgid "检视入库单"
+msgstr "檢視入庫單"
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+msgid "检视发票"
+msgstr "檢視發票"
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+msgid "添加明细"
+msgstr "添加明細"
+
+#. module: purchase_receive
+#: field:purchase.receive,state:0
+msgid "状态"
+msgstr "狀態"
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+msgid "确认计划"
+msgstr "確認計劃"
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+msgid "立账与发票"
+msgstr "立賬與發票"
+
+#. module: purchase_receive
+#: model:ir.actions.act_window,name:purchase_receive.action_purchase_invoice_onreceiving
+msgid "立账及发票"
+msgstr "立賬與發票"
+
+#. module: purchase_receive
+#: view:purchase.invoice.onreceiving:purchase_receive.view_purchase_invoice_onreceiving
+msgid "立账并检视发票"
+msgstr "立賬並檢視發票"
+
+#. module: purchase_receive
+#: field:purchase.invoice.onreceiving,invoice_date:0
+msgid "立账日期"
+msgstr "立賬日期"
+
+#. module: purchase_receive
+#: selection:purchase.receive,state:0
+msgid "草稿"
+msgstr "草稿"
+
+#. module: purchase_receive
+#: help:purchase.receive,date_receive:0
+msgid "计划收货日期"
+msgstr "計劃收貨日期"
+
+#. module: purchase_receive
+#: field:purchase.receive.select.line,select_id:0
+msgid "订单选择"
+msgstr "訂單選擇"
+
+#. module: purchase_receive
+#: view:purchase.receive.select:purchase_receive.view_receive_select
+msgid "请选择采购订单"
+msgstr "請選擇採購訂單"
+
+#. module: purchase_receive
+#: view:purchase.invoice.onreceiving:purchase_receive.view_purchase_invoice_onreceiving
+msgid "进货发票"
+msgstr "進貨發票"
+
+#. module: purchase_receive
+#: model:ir.model,name:purchase_receive.model_purchase_receive
+#: field:purchase.receive.line,receive_id:0
+msgid "采购收货单"
+msgstr "採購收貨單"
+
+#. module: purchase_receive
+#: model:ir.model,name:purchase_receive.model_purchase_receive_line
+#: field:purchase.order.line,receive_line_ids:0
+msgid "采购收货明细"
+msgstr "採購收貨明細"
+
+#. module: purchase_receive
+#: field:purchase.receive.line,purchase_line_id:0
+#: field:purchase.receive.select.line,purchase_line_id:0
+msgid "采购订单"
+msgstr "採購訂單"
+
+#. module: purchase_receive
+#: model:ir.model,name:purchase_receive.model_purchase_invoice_onreceiving
+msgid "采购进货发票开立"
+msgstr "採購進貨發票開立"
+
+#. module: purchase_receive
+#: view:purchase.receive:purchase_receive.view_purchase_receive_form
+msgid "重新立帐"
+msgstr "重新立賬"
+
+#~ msgid "订单明细"
+#~ msgstr "訂單明細"

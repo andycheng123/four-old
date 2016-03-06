@@ -1,0 +1,144 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_chain
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-28 09:52+0000\n"
+"PO-Revision-Date: 2015-09-28 17:53+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: sale_chain
+#: view:sale.store:sale_chain.view_sale_store_form
+#: view:sale.store:sale_chain.view_sale_store_tree
+msgid "Address"
+msgstr "地址"
+
+#. module: sale_chain
+#: view:sale.store:sale_chain.view_sale_store_form
+msgid "Code..."
+msgstr "編碼..."
+
+#. module: sale_chain
+#: view:sale.store:sale_chain.view_sale_store_form
+#: view:sale.store:sale_chain.view_sale_store_search
+msgid "Company"
+msgstr "公司"
+
+#. module: sale_chain
+#: field:sale.store,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: sale_chain
+#: field:sale.store,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: sale_chain
+#: field:res.users,default_store_id:0
+msgid "Default Store"
+msgstr "默認門店"
+
+#. module: sale_chain
+#: view:sale.store:sale_chain.view_sale_store_search
+msgid "Group By"
+msgstr "分組"
+
+#. module: sale_chain
+#: field:sale.store,id:0
+msgid "ID"
+msgstr ""
+
+#. module: sale_chain
+#: field:sale.store,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sale_chain
+#: field:sale.store,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sale_chain
+#: view:sale.store:sale_chain.view_sale_store_form
+#: field:sale.store,member_ids:0
+msgid "Members"
+msgstr "店員"
+
+#. module: sale_chain
+#: view:sale.store:sale_chain.view_sale_store_form
+msgid "Notes"
+msgstr "備註"
+
+#. module: sale_chain
+#: field:sale.store,partner_id:0
+msgid "Partner"
+msgstr ""
+
+#. module: sale_chain
+#: model:ir.model,name:sale_chain.model_product_product
+msgid "Product"
+msgstr ""
+
+#. module: sale_chain
+#: model:ir.model,name:sale_chain.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: sale_chain
+#: model:ir.actions.act_window,name:sale_chain.act_open_sale_store_view
+#: model:ir.model,name:sale_chain.model_sale_store
+#: model:ir.ui.menu,name:sale_chain.menu_sale_store
+#: view:sale.store:sale_chain.view_sale_store_form
+#: view:sale.store:sale_chain.view_sale_store_search
+#: view:sale.store:sale_chain.view_sale_store_tree
+msgid "Sale Store"
+msgstr "銷售門店"
+
+#. module: sale_chain
+#: model:ir.model,name:sale_chain.model_sale_order
+msgid "Sales Order"
+msgstr "銷售訂單"
+
+#. module: sale_chain
+#: field:sale.order,store_id:0
+msgid "Store"
+msgstr "門店"
+
+#. module: sale_chain
+#: field:sale.store,user_id:0
+msgid "Store Leader"
+msgstr "店長"
+
+#. module: sale_chain
+#: field:product.product,store_ids:0
+#: view:product.template:sale_chain.view_product_template_only_form
+msgid "Stores"
+msgstr "銷售門店"
+
+#. module: sale_chain
+#: help:res.users,default_store_id:0
+msgid "The user default serviced store, it fill some form as default value"
+msgstr "該用戶工作所在的門店，或用於填寫各種表單時的默認門店"
+
+#. module: sale_chain
+#: model:ir.model,name:sale_chain.model_res_users
+msgid "Users"
+msgstr ""
+
+#. module: sale_chain
+#: field:sale.store,warehouse_id:0
+msgid "Warehouse"
+msgstr "倉庫"
+
+#~ msgid "Link to related partner"
+#~ msgstr "連接到相關夥伴"
