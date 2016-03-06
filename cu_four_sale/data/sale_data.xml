@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="sale_recipe" model="ir.sequence">
+            <field name="name">Recipe Number</field>
+            <field name="prefix">S%(year)s%(month)s%(day)s</field>
+            <field name="padding">5</field>
+        </record>
+        <record id="sale_optometry" model="ir.sequence">
+            <field name="name">Optometry name</field>
+            <field name="prefix">S%(year)s%(month)s%(day)s</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="sale_product_category_1" model="sale.product.category">
+            <field name="code">A</field>
+            <field name="name">鏡框</field>
+        </record>
+        <record id="sale_product_category_2" model="sale.product.category">
+            <field name="code">B</field>
+            <field name="name">鏡片</field>
+        </record>
+        <record id="sale_product_category_3" model="sale.product.category">
+            <field name="code">C</field>
+            <field name="name">隱形眼鏡</field>
+        </record>
+        <record id="sale_product_category_4" model="sale.product.category">
+            <field name="code">D</field>
+            <field name="name">零件</field>
+        </record>
+        <record id="sale_product_category_5" model="sale.product.category">
+            <field name="code">E</field>
+            <field name="name">其他</field>
+        </record>
+    </data>
+</openerp>

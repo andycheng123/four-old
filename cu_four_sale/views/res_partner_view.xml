@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.actions.act_window" id="act_partner_recipe">
+            <field name="name">處方</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.recipe</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+        <record model="ir.actions.act_window" id="act_partner_optometry">
+            <field name="name">驗光</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.optometry</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+        <record id="view_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <div name="buttons" position="inside">
+                    <button class="oe_inline oe_stat_button" icon="fa-bookmark" type="action" name="%(act_partner_recipe)d" attrs="{'invisible':[('supplier', '=', True)]}" >
+                        <field string="處方" name="recipe_count" widget="statinfo"/>
+                    </button>
+                    <button class="oe_inline oe_stat_button" icon="fa-bookmark" type="action" name="%(act_partner_optometry)d" attrs="{'invisible':[('supplier', '=', True)]}" >
+                        <field string="驗光" name="optometry_count" widget="statinfo"/>
+                    </button>
+                </div>
+                <field name="company_id" position="after">
+                    <field name="store_id"/>
+                </field>
+                <field name="title" position="after">
+                    <field name="invoice_name"/>
+                    <field name="name_company"/>
+                </field>
+                <field name="website" position="after">
+                    <field name="sex"/>
+                    <field name="old_ref"/>
+                </field>
+                <xpath expr="//notebook/page[@string='Sales &amp; Purchases']" position="after">
+                    <page name="Partner Relation" string="Partner Relation">
+                        <group colspan="4">
+                            <field name="introducer_id"/>
+                            <field name="introduced_ids" widget="many2many_tags"/>
+                        </group>
+                        <field name="relation_ids" >
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                                <field name="type"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

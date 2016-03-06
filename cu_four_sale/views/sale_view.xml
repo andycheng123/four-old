@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Hide view D/O button -->
+        <record id="sale_stock_view_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.sale.stock</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/>
+            <field name="arch" type="xml">
+                <!--<xpath expr="//button[@name='action_view_delivery']" postion="attributes">
+                    <attribute name="invisible">1</attribute>
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </xpath>-->
+                <field name="picking_ids" position="replace">
+                </field>
+            </field>
+        </record>
+
+        <!-- S/O -->
+        <record id="sale_order_view_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="priority" eval="19"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+                    <field name="recipe_id" domain="[('partner_id','=', parent.partner_id)]"/>
+                </xpath>
+                 <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="after">
+                    <field name="note"/>
+                </xpath>
+                <field name="store_id" position="replace"/>
+                <field name="user_id" position="replace"/>
+                <!-- 訂單確認日期 -->
+                <field name="date_order" position="after">
+                    <field name="date_confirm" widget="date"/>
+                </field>
+                <field name="partner_id" position="after">
+                    <field name="store_id"/>
+                    <field name="user_id"/>
+                </field>
+                <field name="warehouse_id" position="after">
+                    <field name="tax_ids" widget="many2many_tags"/>
+                </field>
+                <field name="incoterm" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="picking_policy" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="order_policy" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="fiscal_position" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="company_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="origin" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="client_order_ref" position="replace"/>
+                <field name="payment_term" position="after">
+                    <field name="client_order_ref"/>
+                </field>
+                <field name="invoiced" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+
+                <!-- Hide "Send" button -->
+                <button name="action_quotation_send" states="draft" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </button>
+                <button name="action_quotation_send" states="sent,progress,manual" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </button>
+
+                <!-- Change string of "Confirm" button -->
+                <button  name="action_button_confirm" states="draft" position="attributes">
+                    <attribute name="string">訂單完成</attribute>
+                </button>
+                <button  name="action_button_confirm" states="sent" position="attributes">
+                    <attribute name="string">訂單完成</attribute>
+                </button>
+
+                <!-- Hide view invoices button -->
+                <button name="action_view_invoice" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </button>
+                <!--<button  string="Create Invoice" position="after">
+                    <button name="action_invoice_confirm" string="財務審核" type="object" states="manual" class="oe_highlight" groups="base.group_user"/>
+                </button>-->
+                <button string="Create Invoice" position="attributes">
+                    <attribute name="string">財務審核</attribute>
+                    <!-- <attribute name="invisible">1</attribute> -->
+                </button>
+                <button name="cancel" position="attributes">
+                    <attribute name="string">訂單作廢</attribute>
+                </button>
+                <button name="action_cancel" position="attributes">
+                    <attribute name="string">訂單作廢</attribute>
+                </button>
+                <field name="state" position="attributes">
+                    <attribute name="statusbar_visible">"draft,sent,done"</attribute>
+                </field>
+                <page string="Order Lines" position="after">
+                    <page string="統一發票">
+                        <field name="sale_invoices" context="{'default_partner_id':partner_id,'default_amount':amount_untaxed,'default_amount_tax':amount_tax}">
+                            <tree>
+                                <field name="name"/>
+                                <field name="type_invoice"/>
+                                <field name="partner_id" invisible="1"/>
+                                <field name="name_title"/>
+                                <field name="code_uniform"/>
+                                <field name="amount"/>
+                                <field name="amount_tax"/>
+                                <field name="amount_total"/>
+                            </tree>
+
+                        </field>
+                    </page>
+                    <page string="收款">
+                        <!--<button name="action_pay" string="登記收款" states="progress,manual" class="oe_highlight" type="object"/>-->
+                        <field name="receive_ids" readonly="True">
+                            <!--<tree>
+                                <field name="date_receive"/>
+                                <field name="amount"/>
+                                <field name="journal_id"/>
+                                <field name="note"/>
+                            </tree>-->
+                        </field>
+                    </page>
+                    <!-- D/O -->
+                    <page string="出貨單">
+                        <field name="picking_ids">
+                        </field>
+                    </page>
+                    <!-- Invoice -->
+                    <page string="帳單">
+                        <field name="invoice_ids">
+                        </field>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="sale_order_view_tree" model="ir.ui.view">
+            <field name="name">sale_order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="amount_total" position="before">
+                    <field name="balance" widget="monetary"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="sale_order_view_search" model="ir.ui.view">
+            <field name="name">sale.order.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="store_id"/>
+                    <field name="date_order"/>
+                </field>
+                <filter string="Customer" position="after">
+                    <filter name="store_group" string="門店" domain="[]" context="{'group_by':'store_id'}"/>
+                    <filter name="date_group" string="日" domain="[]" context="{'group_by':'date_order:day'}"/>
+                    <filter name="date_group" string="週" domain="[]" context="{'group_by':'date_order:week'}"/>
+                </filter>
+                <filter string="My" position="after">
+                    <group string="門市">
+                        <filter string="總公司" domain="[('store_id', '=', 7)]" name="filter_store_7"/>
+                        <filter string="大安店" domain="[('store_id', '=', 8)]" name="filter_store_8"/>
+                        <filter string="晶華店" domain="[('store_id', '=', 9)]" name="filter_store_9"/>
+                        <filter string="民生店" domain="[('store_id', '=', 10)]" name="filter_store_10"/>
+                        <filter string="仁愛店" domain="[('store_id', '=', 11)]" name="filter_store_11"/>
+                        <filter string="永康店" domain="[('store_id', '=', 12)]" name="filter_store_12"/>
+                    </group>
+                    <group string="日期">
+                        <filter string="當年" domain="[('date_order', '&gt;=', time.strftime('%Y') + '-01-01')]" name="filter_year_this"/>
+                        <filter string="上年" domain="[('date_order', '&gt;=', (context_today()+relativedelta(years=-1)).strftime('%Y') + '-01-01'), ('date_order', '&lt;=', (context_today()+relativedelta(years=-1)).strftime('%Y') + '-12-31')]" name="filter_year_last"/>
+                        <filter string="當月" domain="[('date_order', '&gt;=', time.strftime('%Y-%m') + '-01')]" name="filter_month_this"/>
+                        <filter string="上月" domain="[('date_order', '&gt;=', (context_today()+relativedelta(months=-1)).strftime('%Y-%m') + '-01'), ('date_order', '&lt;=', (context_today()+relativedelta(months=-1, day=31)).strftime('%Y-%m-%d'))]" name="filter_month_last"/>
+                        <filter string="今日" domain="[('date_order', '&gt;=', time.strftime('%Y-%m-%d'))]" name="filter_today"/>
+                        <filter string="昨日" domain="[('date_order', '&gt;=', (context_today()+relativedelta(days=-1)).strftime('%Y-%m-%d')), ('date_order', '&lt;', time.strftime('%Y-%m-%d'))]" name="filter_yesterday"/>
+                    </group>
+                </filter>
+            </field>
+        </record>
+
+        <record id="sale.action_quotations" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state','in',('draft','sent','cancel'))]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation, the first step of a new sale.
+              </p><p>
+                Odoo will help you handle efficiently the complete sale flow:
+                from the quotation to the sales order, the
+                delivery, the invoicing and the payment collection.
+              </p><p>
+                The social feature helps you organize discussions on each sales
+                order, and allow your customers to keep track of the evolution
+                of the sales order.
+              </p>
+            </field>
+        </record>
+
+        <record id="sale.action_orders" model="ir.actions.act_window">
+            <field name="name">Sales Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="context">{}</field>
+            <field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel'))]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a quotation that can be converted into a sales
+                    order.
+                </p><p>
+                    Odoo will help you efficiently handle the complete sales flow:
+                    quotation, sales order, delivery, invoicing and payment.
+                </p>
+            </field>
+        </record>
+
+
+        <record id="sale_order_line_view_tree" model="ir.ui.view">
+            <field name="name">sale_order_line_tree</field>
+            <field name="model">sale.order.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Sale Order Line">
+                    <field name="order_id"/>
+                    <field name="date_order" widget="date"/>
+                    <field name="store_id"/>
+                    <field name="sale_product_categ_id"/>
+                    <field name="brand_id"/>
+                    <field name="product_model"/>
+                    <field name="price_subtotal" string="銷售額" sum="total"/>
+                    <field name="line_cost" sum="cost"/>
+                    <field name="gross_profit" sum="profit"/>
+                    <field name="gross_profit_rate"/>
+                    <field name="state" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="sale_order_line_view_search" model="ir.ui.view">
+            <field name="name">sale.order.line.search</field>
+            <field name="model">sale.order.line</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Search Sales Order Line" expand="1">
+                    <field name="store_id" string="門店"/>
+                    <field name="order_id"/>
+                    <field name="date_order"/>
+                    <field name="product_id"/>
+                    <field name="sale_product_categ_id"/>
+                    <field name="brand_id"/>
+                    <group string="Group by">
+                        <filter string="門店分組" name="store_group" domain="[]" context="{'group_by':'store_id'}"/>
+                        <filter string="產品分組" name="product_group" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="品類分組" name="product_categ_group" domain="[]" context="{'group_by':'sale_product_categ_id'}"/>
+                        <filter string="品牌分組" name="brand_group" domain="[]" context="{'group_by':'brand'}"/>
+                        <filter string="月份" name="month_group" domain="[]" context="{'group_by':'date_order:month'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="sale_order_line_action">
+            <field name="name">毛利排名</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="sale_order_line_view_tree"/>
+            <field name="search_view_id" ref="sale_order_line_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <!--<menuitem id="menu_sale_order_line"
+                  parent="base.menu_sales"
+                  sequence="50"
+                  action="sale_order_line_action"/>-->
+
+
+        <record id="sale_order_line_select_view_tree" model="ir.ui.view">
+            <field name="name">sale_order_line_select_tree</field>
+            <field name="model">sale.order.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Sale Order Line">
+                    <field name="order_id"/>
+                    <field name="partner_id"/>
+                    <field name="store_id"/>
+                    <field name="user_id"/>
+                    <field name="date_order" widget="date"/>
+                    <field name="product_id"/>
+                    <field name="product_uom_qty"/>
+                    <!--<field name="gross_profit"/>-->
+                    <field name="price_subtotal"/>
+                    <field name="state" invisible="1" />
+                </tree>
+            </field>
+        </record>
+        <record id="sale_order_line_select_view_search" model="ir.ui.view">
+            <field name="name">sale.order.line.select.search</field>
+            <field name="model">sale.order.line</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Search Sales Order Line" expand="1">
+                    <field name="order_id"/>
+                    <field name="partner_id"/>
+                    <field name="store_id"/>
+                    <field name="user_id"/>
+                    <field name="date_order"/>
+                    <field name="product_id"/>
+                    <group string="門市">
+                        <filter string="總公司" domain="[('store_id', '=', 7)]" name="filter_store_7"/>
+                        <filter string="大安店" domain="[('store_id', '=', 8)]" name="filter_store_8"/>
+                        <filter string="晶華店" domain="[('store_id', '=', 9)]" name="filter_store_9"/>
+                        <filter string="民生店" domain="[('store_id', '=', 10)]" name="filter_store_10"/>
+                        <filter string="仁愛店" domain="[('store_id', '=', 11)]" name="filter_store_11"/>
+                        <filter string="永康店" domain="[('store_id', '=', 12)]" name="filter_store_12"/>
+                    </group>
+                    <group string="日期">
+                        <filter string="當年" domain="[('date_order', '&gt;=', time.strftime('%Y') + '-01-01')]" name="filter_year_this"/>
+                        <filter string="上年" domain="[('date_order', '&gt;=', (context_today()+relativedelta(years=-1)).strftime('%Y') + '-01-01'), ('date_order', '&lt;=', (context_today()+relativedelta(years=-1)).strftime('%Y') + '-12-31')]" name="filter_year_last"/>
+                        <filter string="當月" domain="[('date_order', '&gt;=', time.strftime('%Y-%m') + '-01')]" name="filter_month_this"/>
+                        <filter string="上月" domain="[('date_order', '&gt;=', (context_today()+relativedelta(months=-1)).strftime('%Y-%m') + '-01'), ('date_order', '&lt;=', (context_today()+relativedelta(months=-1, day=31)).strftime('%Y-%m-%d'))]" name="filter_month_last"/>
+                        <filter string="今日" domain="[('date_order', '&gt;=', time.strftime('%Y-%m-%d'))]" name="filter_today"/>
+                        <filter string="昨日" domain="[('date_order', '&gt;=', (context_today()+relativedelta(days=-1)).strftime('%Y-%m-%d')), ('date_order', '&lt;', time.strftime('%Y-%m-%d'))]" name="filter_yesterday"/>
+                    </group>
+                    <group string="分組">
+                        <filter name="store_group" string="門店" domain="[]" context="{'group_by':'store_id'}"/>
+                        <filter name="date_group" string="日" domain="[]" context="{'group_by':'date_order:day'}"/>
+                        <filter name="date_group" string="週" domain="[]" context="{'group_by':'date_order:week'}"/>
+                        <filter name="date_group" string="月" domain="[]" context="{'group_by':'date_order'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="sale_order_line_select_action">
+            <field name="name">銷售明細</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="sale_order_line_select_view_tree"/>
+            <field name="search_view_id" ref="sale_order_line_select_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_sale_order_select_line"
+                  parent="base.menu_sales"
+                  sequence="50"
+                  action="sale_order_line_select_action"/>
+
+        <record id="view_sale_order_receive_form" model="ir.ui.view">
+            <field name="name">sale.order.receive.form</field>
+            <field name="model">sale.order.receive</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="收款">
+                    <sheet>
+                        <group col="2">
+                           <field name="date_receive" required="1" />
+                            <field name="amount"/>
+                            <field name="journal_id"/>
+                            <!--<field name="count_period" invisible="1"/>-->
+                        </group>
+                        <group col="2">
+                            <field name="note"/>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <record id="view_sale_order_invoice_tree" model="ir.ui.view">
+            <field name="name">sale.order.invoice.tree</field>
+            <field name="model">sale.order.invoice</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="發票">
+                    <field name="name"/>
+                    <field name="name_title"/>
+                    <field name="code_uniform"/>
+                    <field name="amount"/>
+                    <field name="amount_tax"/>
+                    <field name="amount_total"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_sale_order_invoice_form" model="ir.ui.view">
+            <field name="name">sale.order.invoice.form</field>
+            <field name="model">sale.order.invoice</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="發票資料">
+                    <sheet>
+                        <group>
+                            <group col="2">
+                                <field name="partner_id" invisible="1"/>>
+                                <field name="name"/>
+                                <field name="type_invoice"/>
+                                <field name="name_title"/>
+                                <field name="code_uniform"/>
+                            </group>
+                            <group col="2" position="after">
+                                <field name="amount"/>
+                                <field name="amount_tax"/>
+                                <field name="amount_total"/>
+                            </group>
+                        </group>
+                        <label for="note" string="備註"/>
+                        <field name="note"/>
+                        <field name="invoice_lines">
+                            <tree string="發票明細" editable="bottom">
+                                <field name="name_product"/>
+                                <field name="quantity"/>
+                                <field name="price"/>
+                                <field name="amount"/>
+                                <field name="note"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="sale_order_total_action">
+            <field name="name">營業日報</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="sale_order_view_tree"/>
+            <field name="search_view_id" ref="sale_order_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{'search_default_store_group': 1, 'search_default_date_group': 1}</field>
+        </record>
+
+        <!--
+        <menuitem id="menu_sale_order_total"
+                  parent="base.menu_sales"
+                  sequence="50"
+                  action="sale_order_total_action"/>-->
+
+        <record id="sale_order_receive_view_tree" model="ir.ui.view">
+            <field name="name">sale.order.receive.tree</field>
+            <field name="model">account.voucher</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <tree string="收款報表">
+                    <field name="date"/>
+                    <field name="store_id"/>
+                    <field name="journal_id"/>
+                    <field name="amount"/>
+                    <field name="state" invisible="True" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="sale_order_receive_view_search" model="ir.ui.view">
+            <field name="name">sale.order.receive.search</field>
+            <field name="model">account.voucher</field>
+            <field name="type">search</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <search string="收款報表">
+                    <field name="date" select="True"/>
+                    <field name="store_id"/>
+                    <field name="journal_id"/>
+                    <group string="門市">
+                        <filter string="總公司" domain="[('store_id', '=', 7)]" name="filter_store_7"/>
+                        <filter string="大安店" domain="[('store_id', '=', 8)]" name="filter_store_8"/>
+                        <filter string="晶華店" domain="[('store_id', '=', 9)]" name="filter_store_9"/>
+                        <filter string="民生店" domain="[('store_id', '=', 10)]" name="filter_store_10"/>
+                        <filter string="仁愛店" domain="[('store_id', '=', 11)]" name="filter_store_11"/>
+                        <filter string="永康店" domain="[('store_id', '=', 12)]" name="filter_store_12"/>
+                    </group>
+                    <group string="日期">
+                        <filter string="當年" domain="[('date', '&gt;=', time.strftime('%Y') + '-01-01')]" name="filter_year_this"/>
+                        <filter string="上年" domain="[('date', '&gt;=', (context_today()+relativedelta(years=-1)).strftime('%Y') + '-01-01'), ('date', '&lt;=', (context_today()+relativedelta(years=-1)).strftime('%Y') + '-12-31')]" name="filter_year_last"/>
+                        <filter string="當月" domain="[('date', '&gt;=', time.strftime('%Y-%m') + '-01')]" name="filter_month_this"/>
+                        <filter string="上月" domain="[('date', '&gt;=', (context_today()+relativedelta(months=-1)).strftime('%Y-%m') + '-01'), ('date', '&lt;=', (context_today()+relativedelta(months=-1, day=31)).strftime('%Y-%m-%d'))]" name="filter_month_last"/>
+                        <filter string="今日" domain="[('date', '&gt;=', time.strftime('%Y-%m-%d'))]" name="filter_today"/>
+                        <filter string="昨日" domain="[('date', '&gt;=', (context_today()+relativedelta(days=-1)).strftime('%Y-%m-%d')), ('date', '&lt;', time.strftime('%Y-%m-%d'))]" name="filter_yesterday"/>
+                    </group>
+                    <group string="分組">
+                        <filter name="store_group" string="門店" domain="[]" context="{'group_by':'store_id'}"/>
+                        <filter name="date_group_day" string="日" domain="[]" context="{'group_by':'date:day'}"/>
+                        <filter name="date_group_week" string="週" domain="[]" context="{'group_by':'date:week'}"/>
+                        <filter name="date_group" string="月" domain="[]" context="{'group_by':'date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="sale_order_receive_action">
+            <field name="name">收款報表</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.voucher</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="sale_order_receive_view_tree"/>
+            <field name="search_view_id" ref="sale_order_receive_view_search"/>
+            <field name="domain">[('journal_id.type', 'in', ['bank', 'cash']), ('type','=','receipt')]</field>
+            <field name="context">{'search_default_date_group': 1, 'search_default_store_group': 1, 'type':'receipt'}</field>
+        </record>
+
+        <menuitem id="menu_sale_order_receive"
+                  parent="base.menu_sales"
+                  sequence="50"
+                  action="sale_order_receive_action"/>
+
+        <!-- Show store_id in quotation tree view -->
+        <record id="sale_quotation_view_tree_inherit" model="ir.ui.view">
+            <field name="name">sale_order.quotation.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="store_id"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

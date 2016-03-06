@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="stock_picking_view_form_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <button name="do_enter_transfer_details"/>
+            </field>
+        </record>
+        <record id="stock_move_view_tree_inherit" model="ir.ui.view">
+            <field name="name">stock_move.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="location_id" position="attributes">
+                    <attribute name="invisible">0</attribute>
+                    <attribute name="string">來源倉位</attribute>
+                </field>
+                <field name="string_availability_info" position="attributes">
+                    <attribute name="string">可用庫存</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="wizard_stock_export" model="ir.ui.view">
+            <field name="name">Stock TXT</field>
+            <field name="model">stock.txt.export</field>
+            <field name="arch" type="xml">
+                <form string="庫存">
+                    <group colspan="4">
+                        <field name="data" filename="name" readonly="1" />
+                        <field name="name" invisible="1" />
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Close" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_stock_export" model="ir.actions.act_window">
+            <field name="name">Stock TXT</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.txt.export</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+             <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_stock_export"
+                  parent="stock.menu_stock_inventory_control"
+                  sequence="40"
+                  action="action_stock_export"/>
+
+        <record model="ir.ui.view" id="view_stock_quant_form_inherit">
+            <field name="name">stock.quant.form</field>
+            <field name="model">stock.quant</field>
+            <field name="inherit_id" ref="stock.view_stock_quant_form"/>
+            <field eval="11" name="priority"/>
+            <field name="arch" type="xml">
+                <field name="in_date" position="after">
+                    <field name="date_last_in"/>
+                    <field name="date_last_out"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Hide "Current Stock Value" menu item -->
+        <delete id="stock_account.menu_action_history_tree" model="ir.ui.menu"/>
+
+        <!-- Move transfer -->
+        <record model="ir.ui.view" id="move_transfer_view_form">
+            <field name="name">move_transfer_view_form</field>
+            <field name="model">move.transfer</field>
+            <field name="inherit_id" ref="move_transfer.move_transfer_view_form"/>
+            <field name="arch" type="xml">
+                <field name="date_move" position="after">
+                    <field name="date_deliver"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_move_transfer_wizard_form">
+            <field name="name">view_move_transfer_wizard_form</field>
+            <field name="model">move.transfer.wizard</field>
+            <field name="inherit_id" ref="move_transfer.view_move_transfer_wizard_form"/>
+            <field name="arch" type="xml">
+                <field name="stock_quant_ids" position="before">
+                    <field name="location_id"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

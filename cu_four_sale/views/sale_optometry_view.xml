@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.actions.act_window" id="act_history_recipe">
+            <field name="name">處方</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.recipe</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'search_default_optometry_id': active_id}</field>
+        </record>
+
+        <record id="sale_optometry_view_tree" model="ir.ui.view">
+            <field name="name">sale.optometry.tree</field>
+            <field name="model">sale.optometry</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="optometry" default_order="date_order desc">
+                    <field name="partner_id"/>
+                    <field name="date_order"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="store_id"/>
+                    <field name="user_id"/>
+                    <field name="customer_description_id"/>
+                    <field name="note"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sale_optometry_view_form" model="ir.ui.view">
+            <field name="name">sale.optometry.form</field>
+            <field name="model">sale.optometry</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="optometry">
+                    <div class="oe_title oe_left">
+                        <group>
+                            <field name="name" default_focus="1"/>
+                        </group>
+                    </div>
+                    <div class="oe_right oe_button_box" name="buttons">
+                        <button class="oe_inline oe_stat_button" icon="fa-bookmark" type="action" name="%(act_history_recipe)d" >
+                            <field string="處方" name="recipe_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="company_id" widget="selection" readonly="1" groups="base.group_multi_company"/>
+                            <field name="store_id"/>
+                        </group>
+                        <group>
+                            <field name="date_order"/>
+                            <field name="user_id"/>
+                            <field name="customer_description_id"/>
+                        </group>
+                    </group>
+                    <group col="11">
+                        <label  string="."/>
+                        <label style="font-weight: bold;" string="利眼"/>
+                        <label style="font-weight: bold;" string="PD 瞳距"/>
+                        <label style="font-weight: bold;" string="dist_sph"/>
+                        <label style="font-weight: bold;" string="dist_cyl"/>
+                        <label style="font-weight: bold;" string="dist_ax"/>
+                        <label style="font-weight: bold;" string="read_add"/>
+                        <label style="font-weight: bold;" string="視机能"/>
+                        <label style="font-weight: bold;" string="prism_angle"/>
+                        <label style="font-weight: bold;" string="vision"/>
+                        <label style="font-weight: bold;" string="radian"/>
+                        <label style="font-weight: bold;" string="R"/>
+                        <field  name="eye_benefit_r" nolabel="1"/>
+                        <field  name="pd_r" nolabel="1"/>
+                        <field  name="dist_sph_r" nolabel="1"/>
+                        <field  name="dist_cyl_r" nolabel="1"/>
+                        <field  name="dist_ax_r" nolabel="1"/>
+                        <field  name="read_add_r" nolabel="1"/>
+                        <field  name="prism_vector_r" nolabel="1"/>
+                        <field  name="prism_angle_r" nolabel="1"/>
+                        <field  name="vision_r" nolabel="1"/>
+                        <field  name="radian_r" nolabel="1"/>
+                        <label style="font-weight: bold;" string="L"/>
+                        <field  name="eye_benefit_l" nolabel="1" />
+                        <field  name="pd_l"  nolabel="1"/>
+                        <field  name="dist_sph_l" nolabel="1" />
+                        <field  name="dist_cyl_l"  nolabel="1"/>
+                        <field  name="dist_ax_l"  nolabel="1"/>
+                        <field  name="read_add_l"  nolabel="1"/>
+                        <field  name="prism_vector_l"  nolabel="1"/>
+                        <field  name="prism_angle_l"  nolabel="1"/>
+                        <field  name="vision_l"  nolabel="1"/>
+                        <field  name="radian_l"  nolabel="1"/>
+                    </group>
+                    <group>
+                        <field name="note" placeholder="驗光單備註"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="sale_optometry_view_search" model="ir.ui.view">
+            <field name="name">sale.optometry.search</field>
+            <field name="model">sale.optometry</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Optometry">
+                    <field name="partner_id"/>
+                    <field name="date_order"/>
+                    <field name="store_id"/>
+                    <field name="user_id"/>
+                    <field name="customer_description_id"/>
+                    <field name="note"/>
+                    <field name="name"/>
+                    <group string="門市">
+                        <filter string="總公司" domain="[('store_id', '=', 7)]" name="filter_store_7"/>
+                        <filter string="大安店" domain="[('store_id', '=', 8)]" name="filter_store_8"/>
+                        <filter string="晶華店" domain="[('store_id', '=', 9)]" name="filter_store_9"/>
+                        <filter string="民生店" domain="[('store_id', '=', 10)]" name="filter_store_10"/>
+                        <filter string="仁愛店" domain="[('store_id', '=', 11)]" name="filter_store_11"/>
+                        <filter string="永康店" domain="[('store_id', '=', 12)]" name="filter_store_12"/>
+                    </group>
+                    <group string="日期">
+                        <filter string="當年" domain="[('date_order', '&gt;=', time.strftime('%Y') + '-01-01')]" name="filter_year_this"/>
+                        <filter string="上年" domain="[('date_order', '&gt;=', (context_today()+relativedelta(years=-1)).strftime('%Y') + '-01-01'), ('date_order', '&lt;=', (context_today()+relativedelta(years=-1)).strftime('%Y') + '-12-31')]" name="filter_year_last"/>
+                        <filter string="當月" domain="[('date_order', '&gt;=', time.strftime('%Y-%m') + '-01')]" name="filter_month_this"/>
+                        <filter string="上月" domain="[('date_order', '&gt;=', (context_today()+relativedelta(months=-1)).strftime('%Y-%m') + '-01'), ('date_order', '&lt;=', (context_today()+relativedelta(months=-1, day=31)).strftime('%Y-%m-%d'))]" name="filter_month_last"/>
+                        <filter string="今日" domain="[('date_order', '&gt;=', time.strftime('%Y-%m-%d'))]" name="filter_today"/>
+                        <filter string="昨日" domain="[('date_order', '&gt;=', (context_today()+relativedelta(days=-1)).strftime('%Y-%m-%d')), ('date_order', '&lt;', time.strftime('%Y-%m-%d'))]" name="filter_yesterday"/>
+                    </group>
+                    <group string="分組">
+                        <filter name="store_group" string="門店" domain="[]" context="{'group_by':'store_id'}"/>
+                        <filter name="date_group" string="日" domain="[]" context="{'group_by':'date_order:day'}"/>
+                        <filter name="date_group" string="週" domain="[]" context="{'group_by':'date_order:week'}"/>
+                        <filter name="date_group" string="月" domain="[]" context="{'group_by':'date_order'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="sale_optometry_action">
+            <field name="name">optometry</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.optometry</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_sale_optometry"
+                  parent="base.menu_sales"
+                  sequence="20"
+                  action="sale_optometry_action"/>
+
+        <act_window id="act_new_recipe"
+                    name="new recipe"
+                    res_model="sale.recipe"
+                    src_model="sale.optometry"
+                    view_type="form"
+                    view_mode="form"
+                    target="current"
+                    key2="client_action_multi"
+                    multi="False"
+                    context="{'default_optometry_id': active_id}"
+                    />
+
+        <record id="customer_description_view_tree" model="ir.ui.view">
+            <field name="name">customer.description.tree</field>
+            <field name="model">sale.customer.description</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="主訴">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="note"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="customer_description_view_form" model="ir.ui.view">
+            <field name="name">customer.description.form</field>
+            <field name="model">sale.customer.description</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="主述">
+                    <sheet>
+                        <group col="4">
+                            <field name="code"/>
+                            <field name="name"></field>
+                            <field name="note"></field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="customer_description_view_search" model="ir.ui.view">
+            <field name="name">customer.description.search</field>
+            <field name="model">sale.customer.description</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="主訴">
+                    <field name="code" select="True"/>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="customer_description_action">
+            <field name="name">主訴</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.customer.description</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="customer_description_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_customer_description"
+                  parent="base.menu_base_config"
+                  sequence="20"
+                  action="customer_description_action"/>
+    </data>
+</openerp>

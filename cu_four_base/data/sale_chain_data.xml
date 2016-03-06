@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="sale_store_00" model="sale.store">
+            <field name="name">四季眼鏡</field>
+            <field name="ref">10000</field>
+        </record>
+        <record id="sale_store_01" model="sale.store">
+            <field name="name">大安店</field>
+            <field name="ref">10001</field>
+        </record>
+        <record id="sale_store_02" model="sale.store">
+            <field name="name">晶華店</field>
+            <field name="ref">10002</field>
+        </record>
+        <record id="sale_store_03" model="sale.store">
+            <field name="name">民生店</field>
+            <field name="ref">10003</field>
+        </record>
+        <record id="sale_store_04" model="sale.store">
+            <field name="name">仁愛店</field>
+            <field name="ref">10004</field>
+        </record>
+        <record id="sale_store_05" model="sale.store">
+            <field name="name">永康店</field>
+            <field name="ref">10005</field>
+        </record>
+    </data>
+</openerp>

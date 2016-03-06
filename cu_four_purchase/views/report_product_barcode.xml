@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="paperformat_product_label" model="report.paperformat">
+            <field name="name">Product Label</field>
+            <field name="default" eval="False"/>
+            <field name="format">custom</field>
+            <field name="page_height">15</field>
+            <field name="page_width">30</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">800</field>
+        </record>
+
+        <template id="report_product_label_new">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-foreach="o.receive_operation_ids" t-as="l">
+                        <div class="page" style="font-size:5pt; margin:0px; padding:0px;">
+                            <table style="width:100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align:center"><div style="width:100%; height:100%; overflow:hidden;">
+                                                <img style="width:150px; height:8px; margin-left:-30px; margin-right:-30px;" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', l.default_code, 360, 36)" />
+                                        </div></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center"><span t-if="l.default_code" t-field="l.default_code"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;"><span t-if="l.product_name" t-field="l.product_name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;"><span t-if="l.product_brand" t-field="l.product_brand"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center; margin-right:15px;">
+                                            $<span t-if="l.product_price_latest" t-esc="int(l.product_price_latest)"/>
+                                            <span t-if="l.store_id" t-field="l.store_id.ref" style="float:right; white-space:nowrap;"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <report
+            id="action_report_product_label_new"
+            model="purchase.receive"
+            string="分配明細標籤"
+            report_type="qweb-pdf"
+            name="cu_four_purchase.report_product_label_new"
+            attachment_use="False"
+            attachment="'Product_label'+time.strftime('%Y/%m/%d-%H:%M:%S', time.gmtime())+'.pdf'"
+            menu="False"
+        />
+        <record id="action_report_product_label_new" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="cu_four_purchase.paperformat_product_label"/>
+        </record>
+
+        <template id="report_product_label_update">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-foreach="o.update_ids" t-as="l">
+                        <div class="page" style="font-size:6pt; margin:0px; padding:0px;">
+                            <table style="width:100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align:center"><div style="width:100%; height:100%; overflow:hidden;">
+                                                <img style="width:150px; height:13px; margin-left:-20px; margin-right:-30px;" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Standard39', l.product_code, 360, 36)" />
+                                        </div></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center"><span t-if="l.product_code" t-field="l.product_code"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left; font-weight:bold; font-size:5pt;"><span t-if="l.product_name" t-field="l.product_name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left; font-size:5pt;"><span t-if="l.product_brand" t-field="l.product_brand"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center; font-size:7pt;">
+                                            $<span t-if="l.product_price" t-esc="int(l.product_price)"/>
+                                            <span t-if="l.store_id" t-field="l.store_id.ref" style="float:right; width:10px; font-size:6pt; white-space:nowrap;"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <report
+            id="action_report_product_label_update"
+            model="purchase.receive"
+            string="更新明細標籤"
+            report_type="qweb-pdf"
+            name="cu_four_purchase.report_product_label_update"
+            attachment_use="False"
+            attachment="'Product_label'+time.strftime('%Y/%m/%d-%H:%M:%S', time.gmtime())+'.pdf'"
+            menu="False"
+        />
+        <record id="action_report_product_label_update" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="cu_four_purchase.paperformat_product_label"/>
+        </record>
+    </data>
+</openerp>

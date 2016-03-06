@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.rule" id="purchase_receive">
+            <field name="name">Purchase Receive</field>
+            <field name="model_id" ref="model_purchase_receive"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force"></field>
+        </record>
+    </data>
+</openerp>

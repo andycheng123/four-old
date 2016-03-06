@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="sequence_product_default_code" model="ir.sequence">
+            <field name="name">產品序號</field>
+            <field name="prefix">%(y)s%(month)s</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</openerp>

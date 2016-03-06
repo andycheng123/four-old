@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="temp_im_view_tree" model="ir.ui.view">
+            <field name="name">temp.im.tree</field>
+            <field name="model">temp.im</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="TEMP IM">
+                    <field name="product_id"/>
+                    <field name="name"/>
+                    <field name="ean8"/>
+                    <field name="default_code"/>
+                    <field name="product_tmpl_id"/>
+                    <field name="product_tmpl_name"/>
+                    <field name="categ_name"/>
+                    <field name="brand_name"/>
+                    <field name="product_model"/>
+                    <field name="product_specs"/>
+                    <field name="lst_price"/>
+                    <field name="standard_price"/>
+                    <field name="supplier_name"/>
+                    <field name="update_flag"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="temp_im_view_form" model="ir.ui.view">
+            <field name="name">temp.im.form</field>
+            <field name="model">temp.im</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="TEMP IM">
+                    <field name="product_id"/>
+                    <field name="name"/>
+                    <field name="ean8"/>
+                    <field name="default_code"/>
+                    <field name="product_tmpl_id"/>
+                    <field name="product_tmpl_name"/>
+                    <field name="categ_name"/>
+                    <field name="brand_name"/>
+                    <field name="product_model"/>
+                    <field name="product_specs"/>
+                    <field name="lst_price"/>
+                    <field name="standard_price"/>
+                    <field name="supplier_name"/>
+                    <field name="update_flag"/>
+                    <field name="old_im_id"/>
+                    <field name="old_it_id"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="temp_im_view_search" model="ir.ui.view">
+            <field name="name">temp.im.search</field>
+            <field name="model">temp.im</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="TEMP IM">
+                    <field name="name"/>
+                    <field name="product_specs"/>
+                    <field name="default_code"/>
+                    <field name="lst_price"/>
+                    <field name="standard_price"/>
+                    <field name="ean8"/>
+                    <field name="product_tmpl_id"/>
+                    <field name="product_tmpl_name"/>
+                    <field name="categ_name"/>
+                    <field name="brand_name"/>
+                    <field name="product_model"/>
+                    <field name="update_flag"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="temp_im_action">
+            <field name="name">TEMP IM</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">temp.im</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="temp_im_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_temp_im"
+                  parent="base.menu_sales"
+                  sequence="20"
+                  action="temp_im_action"/>
+
+        <record id="temp_im_code_view_tree" model="ir.ui.view">
+            <field name="name">temp.im.code.tree</field>
+            <field name="model">temp.im.code</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="TEMP IM">
+                    <field name="name"/>
+                    <field name="default_code"/>
+                    <field name="ean8"/>
+                    <field name="product_model"/>
+                    <field name="product_specs"/>
+                    <field name="product_tmpl_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="temp_im_code_view_form" model="ir.ui.view">
+            <field name="name">temp.im.code.form</field>
+            <field name="model">temp.im.code</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="TEMP IM">
+                    <field name="name"/>
+                    <field name="default_code"/>
+                    <field name="ean8"/>
+                    <field name="product_model"/>
+                    <field name="product_specs"/>
+                    <field name="product_tmpl_name"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="temp_im_code_view_search" model="ir.ui.view">
+            <field name="name">temp.im.code.search</field>
+            <field name="model">temp.im.code</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="TEMP IM">
+                    <field name="name"/>
+                    <field name="default_code"/>
+                    <field name="ean8"/>
+                    <field name="product_model"/>
+                    <field name="product_specs"/>
+                    <field name="product_tmpl_name"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="temp_im_code_action">
+            <field name="name">TEMP IM CODE</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">temp.im.code</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="temp_im_code_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_temp_im_code"
+                  parent="base.menu_sales"
+                  sequence="20"
+                  action="temp_im_code_action"/>
+
+        <record id="temp_it_view_tree" model="ir.ui.view">
+            <field name="name">temp.it.tree</field>
+            <field name="model">temp.it</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="TEMP IT">
+                    <field name="name"/>
+                    <field name="sale_product_categ_id"/>
+                    <field name="categ_name"/>
+                    <field name="brand_id"/>
+                    <field name="brand_name"/>
+                    <field name="product_model"/>
+                    <field name="update_flag"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="temp_it_view_form" model="ir.ui.view">
+            <field name="name">temp.it.form</field>
+            <field name="model">temp.it</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="TEMP IT">
+                    <field name="name"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="temp_it_view_search" model="ir.ui.view">
+            <field name="name">temp.it.search</field>
+            <field name="model">temp.it</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="TEMP IT">
+                    <field name="name" select="True"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="temp_it_action">
+            <field name="name">TEMP IT</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">temp.it</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="temp_it_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_temp_it"
+                  parent="base.menu_sales"
+                  sequence="20"
+                  action="temp_it_action"/>
+
+        <record id="temp_brand_view_tree" model="ir.ui.view">
+            <field name="name">temp.brand.tree</field>
+            <field name="model">temp.brand</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="TEMP BRAND">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="partner_name"/>
+                    <field name="partner_id"/>
+                    <field name="update_flag"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="temp_brand_view_form" model="ir.ui.view">
+            <field name="name">temp.brand.form</field>
+            <field name="model">temp.brand</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="TEMP BRAND">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="update_flag"/>
+                    <field name="partner_name"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="temp_brand_view_search" model="ir.ui.view">
+            <field name="name">temp.brand.search</field>
+            <field name="model">temp.brand</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="TEMP BRAND">
+                    <field name="name" select="True"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="temp_brand_action">
+            <field name="name">TEMP BRAND</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">temp.brand</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="temp_brand_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_temp_brand"
+                  parent="base.menu_sales"
+                  sequence="20"
+                  action="temp_brand_action"/>
+
+        <record id="temp_ean8_view_tree" model="ir.ui.view">
+            <field name="name">temp.ean8.tree</field>
+            <field name="model">temp.ean8</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="ean8">
+                    <field name="default_code"/>
+                    <field name="ean8"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="temp_ean8_view_form" model="ir.ui.view">
+            <field name="name">temp.ean8.form</field>
+            <field name="model">temp.ean8</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="ean8">
+                    <field name="default_code"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="temp_ean8_view_search" model="ir.ui.view">
+            <field name="name">temp.ean8.search</field>
+            <field name="model">temp.ean8</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="ean8">
+                    <field name="default_code" select="True"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="temp_ean81_action">
+            <field name="name">ean8</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">temp.ean8</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="temp_ean8_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_temp_ean81"
+                  parent="base.menu_sales"
+                  sequence="20"
+                  action="temp_ean81_action"/>
+    </data>
+</openerp>

@@ -1,0 +1,800 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* cu_four_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-12 06:34+0000\n"
+"PO-Revision-Date: 2015-11-05 18:00+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: cu_four_sale
+#: field:sale.recipe,extend_BVD:0
+msgid "BVD"
+msgstr "BVD"
+
+#. module: cu_four_sale
+#: field:sale.recipe,extend_Bawangle:0
+msgid "Bawangle"
+msgstr "Bawangle"
+
+#. module: cu_four_sale
+#: view:product.brand:cu_four_sale.product_brand_view_form
+#: view:product.brand:cu_four_sale.product_brand_view_search
+#: view:product.brand:cu_four_sale.product_brand_view_tree
+msgid "Brand"
+msgstr "Brand"
+
+#. module: cu_four_sale
+#: view:product.template:cu_four_sale.product_template_search_view
+msgid "Category"
+msgstr "產品類別"
+
+#. module: cu_four_sale
+#: field:product.brand,create_uid:0 field:res.partner.relation,create_uid:0
+#: field:res.partner.relation.type,create_uid:0
+#: field:sale.customer.description,create_uid:0
+#: field:sale.optometry,create_uid:0 field:sale.order.invoice,create_uid:0
+#: field:sale.order.invoice.line,create_uid:0
+#: field:sale.order.receive,create_uid:0
+#: field:sale.product.category,create_uid:0 field:sale.recipe,create_uid:0
+#: field:sale.recipe.category,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: cu_four_sale
+#: field:product.brand,create_date:0 field:res.partner.relation,create_date:0
+#: field:res.partner.relation.type,create_date:0
+#: field:sale.customer.description,create_date:0
+#: field:sale.optometry,create_date:0 field:sale.order.invoice,create_date:0
+#: field:sale.order.invoice.line,create_date:0
+#: field:sale.order.receive,create_date:0
+#: field:sale.product.category,create_date:0 field:sale.recipe,create_date:0
+#: field:sale.recipe.category,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: cu_four_sale
+#: view:sale.order:cu_four_sale.sale_order_view_search
+msgid "Customer"
+msgstr "客戶"
+
+#. module: cu_four_sale
+#: field:sale.recipe,extend_DBL:0
+msgid "DBL"
+msgstr "DBL"
+
+#. module: cu_four_sale
+#: field:sale.optometry,date_order:0
+msgid "Date Order"
+msgstr "日期"
+
+#. module: cu_four_sale
+#: field:sale.recipe,date_recipe:0
+msgid "Date Recipe"
+msgstr "日期"
+
+#. module: cu_four_sale
+#: field:res.partner.relation,name:0
+msgid "Description"
+msgstr "描述"
+
+#. module: cu_four_sale
+#: field:sale.optometry,dist_ax_l:0 field:sale.recipe,dist_ax_l:0
+msgid "Distance AX L"
+msgstr "AX 軸度 L"
+
+#. module: cu_four_sale
+#: field:sale.optometry,dist_ax_r:0 field:sale.recipe,dist_ax_r:0
+msgid "Distance AX R"
+msgstr "AX 軸度 R"
+
+#. module: cu_four_sale
+#: field:sale.optometry,dist_cyl_l:0 field:sale.optometry,dist_sph_l:0
+#: field:sale.recipe,dist_cyl_l:0 field:sale.recipe,dist_sph_l:0
+msgid "Distance SPH L"
+msgstr "SPH 球面 L"
+
+#. module: cu_four_sale
+#: field:sale.optometry,dist_cyl_r:0 field:sale.optometry,dist_sph_r:0
+#: field:sale.recipe,dist_cyl_r:0 field:sale.recipe,dist_sph_r:0
+msgid "Distance SPH R"
+msgstr "SPH 球面 R"
+
+#. module: cu_four_sale
+#: code:addons/cu_four_sale/models/recipe.py:15
+#: code:addons/cu_four_sale/models/sale_optometry.py:15
+#, python-format
+msgid "Error!"
+msgstr "錯誤！"
+
+#. module: cu_four_sale
+#: field:sale.recipe,eye_position_l:0
+msgid "Eye Position L"
+msgstr "H 眼位 L"
+
+#. module: cu_four_sale
+#: field:sale.recipe,eye_position_r:0
+msgid "Eye Position R"
+msgstr "H 眼位 R"
+
+#. module: cu_four_sale
+#: field:sale.recipe,extend_FF:0
+msgid "FF"
+msgstr "FF"
+
+#. module: cu_four_sale
+#: field:sale.recipe,frame:0
+msgid "Frame"
+msgstr "鏡框"
+
+#. module: cu_four_sale
+#: field:sale.recipe,glasses:0
+msgid "Glasses"
+msgstr "鏡片"
+
+#. module: cu_four_sale
+#: view:sale.order.line:cu_four_sale.sale_order_line_view_search
+msgid "Group by"
+msgstr "Group by"
+
+#. module: cu_four_sale
+#: field:product.brand,id:0 field:res.partner.relation,id:0
+#: field:res.partner.relation.type,id:0 field:sale.customer.description,id:0
+#: field:sale.optometry,id:0 field:sale.order.invoice,id:0
+#: field:sale.order.invoice.line,id:0 field:sale.order.receive,id:0
+#: field:sale.product.category,id:0 field:sale.recipe,id:0
+#: field:sale.recipe.category,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: cu_four_sale
+#: field:res.partner,introduced_ids:0
+msgid "Introduce Partner"
+msgstr "已介绍的客户"
+
+#. module: cu_four_sale
+#: field:res.partner,introducer_id:0
+msgid "Introducer"
+msgstr "介紹人"
+
+#. module: cu_four_sale
+#: field:product.brand,write_uid:0 field:res.partner.relation,write_uid:0
+#: field:res.partner.relation.type,write_uid:0
+#: field:sale.customer.description,write_uid:0
+#: field:sale.optometry,write_uid:0 field:sale.order.invoice,write_uid:0
+#: field:sale.order.invoice.line,write_uid:0
+#: field:sale.order.receive,write_uid:0
+#: field:sale.product.category,write_uid:0 field:sale.recipe,write_uid:0
+#: field:sale.recipe.category,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: cu_four_sale
+#: field:product.brand,write_date:0 field:res.partner.relation,write_date:0
+#: field:res.partner.relation.type,write_date:0
+#: field:sale.customer.description,write_date:0
+#: field:sale.optometry,write_date:0 field:sale.order.invoice,write_date:0
+#: field:sale.order.invoice.line,write_date:0
+#: field:sale.order.receive,write_date:0
+#: field:sale.product.category,write_date:0 field:sale.recipe,write_date:0
+#: field:sale.recipe.category,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: cu_four_sale
+#: field:sale.recipe,note:0
+msgid "Note"
+msgstr "備註"
+
+#. module: cu_four_sale
+#: field:sale.optometry,name:0 field:sale.recipe,name:0
+msgid "Number"
+msgstr "編號"
+
+#. module: cu_four_sale
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_search
+#: field:sale.recipe,optometry_id:0
+msgid "Optometry"
+msgstr "驗光單"
+
+#. module: cu_four_sale
+#: view:sale.order:cu_four_sale.sale_order_view_form_inherit
+msgid "Order Lines"
+msgstr "訂單行"
+
+#. module: cu_four_sale
+#: field:sale.optometry,pd_l:0 field:sale.recipe,pd_l:0
+msgid "PD L"
+msgstr "PD 瞳距 L"
+
+#. module: cu_four_sale
+#: field:sale.optometry,pd_r:0 field:sale.recipe,pd_r:0
+msgid "PD R"
+msgstr "PD 瞳距 R"
+
+#. module: cu_four_sale
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_form
+#: view:sale.recipe:cu_four_sale.view_recipe_form
+msgid "PD 瞳距"
+msgstr "PD 瞳距"
+
+#. module: cu_four_sale
+#: field:sale.recipe,extend_Panto:0
+msgid "Panto"
+msgstr "Panto"
+
+#. module: cu_four_sale
+#: model:ir.model,name:cu_four_sale.model_res_partner
+#: field:res.partner.relation,partner_id:0 field:sale.optometry,partner_id:0
+#: field:sale.recipe,partner_id:0
+msgid "Partner"
+msgstr "客戶"
+
+#. module: cu_four_sale
+#: view:res.partner:cu_four_sale.view_partner_form
+msgid "Partner Relation"
+msgstr "客户关系"
+
+#. module: cu_four_sale
+#: field:sale.recipe,period:0
+msgid "Period"
+msgstr "年月"
+
+#. module: cu_four_sale
+#: field:sale.optometry,prism_angle_l:0 field:sale.recipe,prism_angle_l:0
+msgid "Prism Angle L"
+msgstr "Base 基底 L"
+
+#. module: cu_four_sale
+#: field:sale.optometry,prism_angle_r:0 field:sale.recipe,prism_angle_r:0
+msgid "Prism Angle R"
+msgstr "Base 基底 R"
+
+#. module: cu_four_sale
+#: field:sale.optometry,prism_vector_l:0 field:sale.recipe,prism_vector_l:0
+msgid "Prism Vector L"
+msgstr "Prism 稜鏡 L"
+
+#. module: cu_four_sale
+#: field:sale.optometry,prism_vector_r:0 field:sale.recipe,prism_vector_r:0
+msgid "Prism Vector R"
+msgstr "Prism 稜鏡 R"
+
+#. module: cu_four_sale
+#: field:sale.recipe,extend_RD:0
+msgid "RD"
+msgstr "RD"
+
+#. module: cu_four_sale
+#: field:sale.optometry,radian_l:0 field:sale.recipe,radian_l:0
+msgid "Radian L"
+msgstr "BC 弧度 L"
+
+#. module: cu_four_sale
+#: field:sale.optometry,radian_r:0 field:sale.recipe,radian_r:0
+msgid "Radian R"
+msgstr "BC 弧度 L"
+
+#. module: cu_four_sale
+#: field:sale.optometry,read_add_l:0 field:sale.recipe,read_add_l:0
+msgid "Reading ADD L"
+msgstr "ADD 加度 L"
+
+#. module: cu_four_sale
+#: field:sale.optometry,read_add_r:0 field:sale.recipe,read_add_r:0
+msgid "Reading ADD R"
+msgstr "ADD 加度 R"
+
+#. module: cu_four_sale
+#: view:sale.recipe:cu_four_sale.view_recipe_form
+#: view:sale.recipe:cu_four_sale.view_recipe_search
+#: view:sale.recipe:cu_four_sale.view_recipe_tree
+msgid "Recipe"
+msgstr "處方單"
+
+#. module: cu_four_sale
+#: view:sale.recipe.category:cu_four_sale.sale_recipe_category_view_form
+#: view:sale.recipe.category:cu_four_sale.sale_recipe_category_view_tree
+#: view:sale.recipe.category:cu_four_sale.view_sale_recipe_category_search
+msgid "Recipe Category"
+msgstr "Recipe Category"
+
+#. module: cu_four_sale
+#: field:res.partner,recipe_ids:0
+msgid "Recipes"
+msgstr "處方單"
+
+#. module: cu_four_sale
+#: field:res.partner,relation_ids:0
+#: field:res.partner.relation,partner_master_id:0
+msgid "Relation Partner"
+msgstr "Relation Partner"
+
+#. module: cu_four_sale
+#: model:ir.model,name:cu_four_sale.model_sale_customer_description
+msgid "Sale Customer Description"
+msgstr "Sale Customer Description"
+
+#. module: cu_four_sale
+#: view:sale.order.line:cu_four_sale.sale_order_line_select_view_tree
+#: view:sale.order.line:cu_four_sale.sale_order_line_view_tree
+msgid "Sale Order Line"
+msgstr "Sale Order Line"
+
+#. module: cu_four_sale
+#: model:ir.model,name:cu_four_sale.model_sale_recipe_category
+msgid "Sale Recipe Category"
+msgstr "Sale Recipe Category"
+
+#. module: cu_four_sale
+#: model:ir.model,name:cu_four_sale.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "銷貨單明㚼"
+
+#. module: cu_four_sale
+#: view:sale.order.line:cu_four_sale.sale_order_line_select_view_search
+#: view:sale.order.line:cu_four_sale.sale_order_line_view_search
+msgid "Search Sales Order Line"
+msgstr "Search Sales Order Line"
+
+#. module: cu_four_sale
+#: sql_constraint:sale.recipe.category:0
+msgid "The Code of the Category must be unique!"
+msgstr "The Code of the Category must be unique!"
+
+#. module: cu_four_sale
+#: code:addons/cu_four_sale/models/recipe.py:15
+#: code:addons/cu_four_sale/models/sale_optometry.py:15
+#, python-format
+msgid "There is no default company for the  current user!"
+msgstr "當前用戶沒有設置默認的公司！"
+
+#. module: cu_four_sale
+#: field:res.partner.relation,type:0
+msgid "Type"
+msgstr "关系类型"
+
+#. module: cu_four_sale
+#: field:sale.optometry,user_id:0 field:sale.recipe,user_id:0
+msgid "User"
+msgstr "承建人"
+
+#. module: cu_four_sale
+#: field:sale.optometry,vision_l:0 field:sale.recipe,vision_l:0
+msgid "VA L"
+msgstr "VA 視力 L"
+
+#. module: cu_four_sale
+#: field:sale.optometry,vision_r:0 field:sale.recipe,vision_r:0
+msgid "VA R"
+msgstr "VA 視力 R"
+
+#. module: cu_four_sale
+#: field:sale.optometry,company_id:0 field:sale.recipe,company_id:0
+msgid "company"
+msgstr "公司"
+
+#. module: cu_four_sale
+#: view:sale.order.line:cu_four_sale.sale_order_line_view_tree
+msgid "cost"
+msgstr "cost"
+
+#. module: cu_four_sale
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_form
+#: view:sale.recipe:cu_four_sale.view_recipe_form
+msgid "dist_ax"
+msgstr "AX 軸度"
+
+#. module: cu_four_sale
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_form
+#: view:sale.recipe:cu_four_sale.view_recipe_form
+msgid "dist_cyl"
+msgstr "CYL 散光"
+
+#. module: cu_four_sale
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_form
+#: view:sale.recipe:cu_four_sale.view_recipe_form
+msgid "dist_sph"
+msgstr "SPH 球面"
+
+#. module: cu_four_sale
+#: view:sale.recipe:cu_four_sale.view_recipe_form
+msgid "eye_position"
+msgstr "H 眼位"
+
+#. module: cu_four_sale
+#: model:ir.model,name:cu_four_sale.model_sale_optometry
+msgid "glasses optometry order"
+msgstr "驗光單"
+
+#. module: cu_four_sale
+#: model:ir.actions.act_window,name:cu_four_sale.act_new_recipe
+msgid "new recipe"
+msgstr "建立處方單"
+
+#. module: cu_four_sale
+#: model:ir.actions.act_window,name:cu_four_sale.sale_optometry_action
+#: model:ir.ui.menu,name:cu_four_sale.menu_sale_optometry
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_form
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_tree
+msgid "optometry"
+msgstr "驗光單"
+
+#. module: cu_four_sale
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_form
+#: view:sale.recipe:cu_four_sale.view_recipe_form
+msgid "prism_angle"
+msgstr "Base 基底"
+
+#. module: cu_four_sale
+#: view:sale.order.line:cu_four_sale.sale_order_line_view_tree
+msgid "profit"
+msgstr "profit"
+
+#. module: cu_four_sale
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_form
+#: view:sale.recipe:cu_four_sale.view_recipe_form
+msgid "radian"
+msgstr "BC 弧度"
+
+#. module: cu_four_sale
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_form
+#: view:sale.recipe:cu_four_sale.view_recipe_form
+msgid "read_add"
+msgstr "ADD 加度"
+
+#. module: cu_four_sale
+#: view:sale.order.line:cu_four_sale.sale_order_line_view_tree
+msgid "total"
+msgstr "total"
+
+#. module: cu_four_sale
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_form
+#: view:sale.recipe:cu_four_sale.view_recipe_form
+msgid "vision"
+msgstr "VA 視力"
+
+#. module: cu_four_sale
+#: selection:sale.order.invoice,type_invoice:0
+msgid "三聯式"
+msgstr "三聯式"
+
+#. module: cu_four_sale
+#: model:ir.actions.act_window,name:cu_four_sale.customer_description_action
+#: model:ir.ui.menu,name:cu_four_sale.menu_customer_description
+#: field:sale.customer.description,name:0
+#: field:sale.optometry,customer_description_id:0
+msgid "主訴"
+msgstr "主訴"
+
+#. module: cu_four_sale
+#: selection:sale.order.invoice,type_invoice:0
+msgid "二聯式"
+msgstr "二聯式"
+
+#. module: cu_four_sale
+#: field:sale.optometry,note:0 field:sale.order.invoice,note:0
+#: field:sale.order.invoice.line,note:0 field:sale.order.receive,note:0
+msgid "備註"
+msgstr "備註"
+
+#. module: cu_four_sale
+#: field:sale.optometry,eye_benefit_l:0 field:sale.recipe,eye_benefit_l:0
+msgid "利眼 L"
+msgstr "利眼 L"
+
+#. module: cu_four_sale
+#: field:sale.optometry,eye_benefit_r:0 field:sale.recipe,eye_benefit_r:0
+msgid "利眼 R"
+msgstr "利眼 R"
+
+#. module: cu_four_sale
+#: field:sale.order.receive,count_period:0
+msgid "刷卡期數"
+msgstr "刷卡期數"
+
+#. module: cu_four_sale
+#: field:product.brand,name:0 field:res.partner.relation.type,name:0
+#: field:sale.product.category,name:0 field:sale.recipe.category,name:0
+msgid "名稱"
+msgstr "名稱"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice,amount_total:0
+msgid "含稅金額"
+msgstr "含稅金額"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice.line,name_product:0
+msgid "品名"
+msgstr "品名"
+
+#. module: cu_four_sale
+#: model:ir.actions.act_window,name:cu_four_sale.product_brand_action
+#: model:ir.model,name:cu_four_sale.model_product_brand
+#: model:ir.ui.menu,name:cu_four_sale.menu_product_brand
+#: field:product.template,brand_id:0 field:sale.order.line,brand_id:0
+msgid "品牌"
+msgstr "品牌"
+
+#. module: cu_four_sale
+#: view:sale.order.line:cu_four_sale.sale_order_line_view_search
+msgid "品牌分組"
+msgstr "品牌分組"
+
+#. module: cu_four_sale
+#: field:product.product,product_specs:0
+msgid "品規"
+msgstr "品規"
+
+#. module: cu_four_sale
+#: model:ir.actions.act_window,name:cu_four_sale.sale_product_category_action
+#: model:ir.ui.menu,name:cu_four_sale.menu_sale_product_category
+#: field:product.brand,categ_id:0
+#: field:product.template,sale_product_categ_id:0
+#: field:sale.order.line,sale_product_categ_id:0
+msgid "品類"
+msgstr "品類"
+
+#. module: cu_four_sale
+#: view:sale.order.line:cu_four_sale.sale_order_line_view_search
+msgid "品類分組"
+msgstr "品類分組"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice.line,price:0
+msgid "單價"
+msgstr "單價"
+
+#. module: cu_four_sale
+#: field:product.template,product_model:0
+msgid "型號"
+msgstr "型號"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice,partner_id:0
+msgid "客戶"
+msgstr "客戶"
+
+#. module: cu_four_sale
+#: code:addons/cu_four_sale/models/res_partner.py:34
+#, python-format
+msgid "客户关系中名稱和客户，不能同时为空！"
+msgstr "客户关系中名稱和客户，不能同时为空！"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice,name_title:0
+msgid "抬頭"
+msgstr "抬頭"
+
+#. module: cu_four_sale
+#: code:addons/cu_four_sale/models/res_partner.py:34
+#, python-format
+msgid "提示"
+msgstr "提示"
+
+#. module: cu_four_sale
+#: field:sale.order.receive,journal_id:0
+msgid "收款方式"
+msgstr "收款方式"
+
+#. module: cu_four_sale
+#: field:sale.order.receive,date_receive:0
+msgid "收款日期"
+msgstr "收款日期"
+
+#. module: cu_four_sale
+#: model:ir.model,name:cu_four_sale.model_sale_order_receive
+#: field:sale.order,receive_ids:0
+msgid "收款明細"
+msgstr "收款明細"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice.line,quantity:0
+msgid "數量"
+msgstr "數量"
+
+#. module: cu_four_sale
+#: model:ir.actions.act_window,name:cu_four_sale.sale_order_line_action
+#: model:ir.ui.menu,name:cu_four_sale.menu_sale_order_line
+msgid "毛利排名"
+msgstr "毛利排名"
+
+#. module: cu_four_sale
+#: view:sale.order.line:cu_four_sale.sale_order_line_view_search
+msgid "產品分組"
+msgstr "產品分組"
+
+#. module: cu_four_sale
+#: field:product.template,name_compute:0
+msgid "產品名稱"
+msgstr "產品名稱"
+
+#. module: cu_four_sale
+#: field:sale.order.line,product_model:0
+msgid "產品型號"
+msgstr "產品型號"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice,invoice_lines:0
+#: field:sale.order.invoice.line,invoice_id:0
+msgid "發票"
+msgstr "發票"
+
+#. module: cu_four_sale
+#: model:ir.model,name:cu_four_sale.model_sale_order_invoice_line
+#: field:sale.order,sale_invoices:0
+#: view:sale.order.invoice:cu_four_sale.view_sale_order_invoice_form
+msgid "發票明細"
+msgstr "發票明細"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice,name:0
+msgid "發票號碼"
+msgstr "發票號碼"
+
+#. module: cu_four_sale
+#: view:sale.order.invoice:cu_four_sale.view_sale_order_invoice_form
+msgid "發票資料"
+msgstr "發票資料"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice,type_invoice:0
+msgid "發票類型"
+msgstr "發票類型"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice,amount_tax:0
+msgid "稅額"
+msgstr "稅額"
+
+#. module: cu_four_sale
+#: field:sale.recipe,category_id:0
+msgid "種類"
+msgstr "種類"
+
+#. module: cu_four_sale
+#: view:sale.order:cu_four_sale.sale_order_view_form_inherit
+msgid "統一發票"
+msgstr "統一發票"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice,code_uniform:0
+msgid "統一編號"
+msgstr "統一編號"
+
+#. module: cu_four_sale
+#: field:product.brand,code:0 field:sale.customer.description,code:0
+#: field:sale.product.category,code:0 field:sale.recipe.category,code:0
+msgid "編號"
+msgstr "編號"
+
+#. module: cu_four_sale
+#: model:ir.actions.act_window,name:cu_four_sale.act_history_recipe
+#: model:ir.actions.act_window,name:cu_four_sale.act_partner_recipe
+msgid "處方"
+msgstr "處方"
+
+#. module: cu_four_sale
+#: model:ir.actions.act_window,name:cu_four_sale.act_open_recipe_view
+#: model:ir.ui.menu,name:cu_four_sale.menu_recipe
+#: field:sale.order.line,recipe_id:0
+msgid "處方單"
+msgstr "處方單"
+
+#. module: cu_four_sale
+#: model:ir.actions.act_window,name:cu_four_sale.sale_recipe_category_action
+#: model:ir.ui.menu,name:cu_four_sale.menu_sale_recipe_category
+msgid "處方單種類"
+msgstr "處方單種類"
+
+#. module: cu_four_sale
+#: view:sale.optometry:cu_four_sale.sale_optometry_view_form
+#: view:sale.recipe:cu_four_sale.view_recipe_form
+msgid "視机能"
+msgstr "視机能"
+
+#. module: cu_four_sale
+#: field:sale.order.line,date_order:0
+msgid "訂單日期"
+msgstr "訂單日期"
+
+#. module: cu_four_sale
+#: field:product.brand,note:0 field:sale.customer.description,note:0
+#: field:sale.product.category,note:0 field:sale.recipe.category,note:0
+msgid "說明"
+msgstr "說明"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice,amount:0 field:sale.order.invoice.line,amount:0
+#: field:sale.order.receive,amount:0
+msgid "金額"
+msgstr "金額"
+
+#. module: cu_four_sale
+#: model:ir.actions.act_window,name:cu_four_sale.sale_order_line_select_action
+#: model:ir.ui.menu,name:cu_four_sale.menu_sale_order_select_line
+msgid "銷售明細"
+msgstr "銷售明細"
+
+#. module: cu_four_sale
+#: model:ir.model,name:cu_four_sale.model_sale_order_invoice
+msgid "銷售發票"
+msgstr "銷售發票"
+
+#. module: cu_four_sale
+#: view:sale.order.line:cu_four_sale.sale_order_line_view_tree
+msgid "銷售額"
+msgstr "銷售額"
+
+#. module: cu_four_sale
+#: model:ir.model,name:cu_four_sale.model_sale_product_category
+msgid "銷售類別"
+msgstr "銷售類別"
+
+#. module: cu_four_sale
+#: field:sale.order.invoice,saleorder_id:0
+#: field:sale.order.receive,saleorder_id:0
+msgid "銷貨單"
+msgstr "銷貨單"
+
+#. module: cu_four_sale
+#: field:res.partner,store_id:0 field:sale.optometry,store_id:0
+#: field:sale.order,store_id:0 field:sale.order.line,store_id:0
+#: field:sale.recipe,store_id:0
+msgid "門店"
+msgstr "門店"
+
+#. module: cu_four_sale
+#: view:sale.order.line:cu_four_sale.sale_order_line_select_view_search
+#: view:sale.order.line:cu_four_sale.sale_order_line_view_search
+msgid "門店分組"
+msgstr "門店分組"
+
+#. module: cu_four_sale
+#: model:ir.actions.act_window,name:cu_four_sale.act_partner_optometry
+msgid "驗光"
+msgstr "驗光"
+
+#. module: product
+#: model:ir.model,name:product.model_product_product
+#: field:product.packaging,product_tmpl_id:0
+#: field:product.pricelist.item,product_id:0
+#: view:product.template:product.product_template_form_view
+#: view:product.template:product.product_template_search_view
+#: view:product.template:product.product_template_tree_view
+#: model:res.request.link,name:product.req_link_product
+msgid "Product"
+msgstr "產品"
+
+#. module: product
+#: model:ir.model,name:product.model_product_template
+#: field:product.attribute.line,product_tmpl_id:0
+#: field:product.attribute.price,product_tmpl_id:0
+#: field:product.price.history,product_template_id:0
+#: field:product.pricelist.item,product_tmpl_id:0
+#: view:product.product:product.product_search_form_view
+#: field:product.product,product_tmpl_id:0
+#: field:product.supplierinfo,product_tmpl_id:0
+#: view:product.template:product.product_template_only_form_view
+msgid "Product Template"
+msgstr "產品款式"
+
+#. module: sale
+#: selection:sale.order,state:0 selection:sale.report,state:0
+msgid "Quotation Sent"
+msgstr "待銷貨"
+
+#. module: sale
+#: selection:sale.order,state:0
+msgid "Sale Order"
+msgstr "銷貨已完成"
