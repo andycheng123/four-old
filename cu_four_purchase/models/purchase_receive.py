@@ -297,6 +297,8 @@ class PurchaseReceiveLine(models.Model):
     sequence = fields.Integer(string=u'序號', readonly=True, help='')
     cost = fields.Float(string=u'成本單價', readonly=True, help=u'成本單價')
 
+    _order = 'sequence asc'
+
 class PurchaseReceiveUpdate(models.Model):
     _name = 'purchase.receive.update'
 
@@ -354,6 +356,8 @@ class StockReceiveOperation(models.Model):
     store_id = fields.Many2one('sale.store', string=u'分店', help='')
     purchase_order_id = fields.Many2one('purchase.order', string=u'採購單', help='')
     cost = fields.Float(string=u'成本單價', readonly=True, help=u'成本單價')
+
+    _order = 'sequence asc'
 
 
 class PurchaseReceiveStrategy(models.Model):
