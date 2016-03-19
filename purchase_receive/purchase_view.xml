@@ -12,6 +12,7 @@
                     <field name="partner_id"/>
                     <field name="partner_ref"/>
                     <field name="date_receive"/>
+                    <field name="picking_type_id" />
                     <field name="state"/>
                 </tree>
             </field>
@@ -87,6 +88,12 @@
             <field name="arch" type="xml">
                 <search string="Purchase Receive">
                     <field name="name" select="True"/>
+                    <field name="state"/>
+                    <field name="picking_type_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="運送到" name="deliver_group" domain="[]" context="{'group_by':'picking_type_id'}"/>
+                        <filter string="狀態分組" name="state_group" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
                 </search>
             </field>
         </record>

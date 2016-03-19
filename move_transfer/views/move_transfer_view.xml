@@ -96,6 +96,15 @@
                     <group expand="1" string="分組">
                         <filter string="開單門店" domain="[]" context="{'group_by':'store_id'}"/>
                     </group>
+                    <filter string="本月"
+                            name="this.month.1"
+                            domain="[('date_move', '&gt;=', context_today().strftime('%%Y-%%m-1')) ]"/>
+                    <filter string="前月"
+                            name="last.month.1"
+                            domain="[('date_move', '&gt;=', datetime.date(context_today().year,context_today().month-1,1).strftime('%%Y-%%m-%%d')), ('date_move', '&lt;', context_today().strftime('%%Y-%%m-1'))]"/>
+                    <filter string="前2月"
+                            name="last.month.3"
+                            domain="[('date_move', '&gt;=', datetime.date(context_today().year,context_today().month-2,1).strftime('%%Y-%%m-%%d')), ('date_move', '&lt;',datetime.date(context_today().year,context_today().month-1,1).strftime('%%Y-%%m-%%d'))]"/>
                 </search>
             </field>
         </record>

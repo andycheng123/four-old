@@ -493,7 +493,6 @@
                     <field name="store_id"/>
                     <field name="journal_id"/>
                     <field name="partner_id"/>
-                    <field name="saleorder_id"/>
                     <field name="amount"/>
                     <field name="state" invisible="True" />
                 </tree>
