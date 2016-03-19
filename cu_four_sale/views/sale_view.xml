@@ -492,6 +492,8 @@
                     <field name="date"/>
                     <field name="store_id"/>
                     <field name="journal_id"/>
+                    <field name="partner_id"/>
+                    <field name="saleorder_id"/>
                     <field name="amount"/>
                     <field name="state" invisible="True" />
                 </tree>
@@ -508,6 +510,7 @@
                     <field name="date" select="True"/>
                     <field name="store_id"/>
                     <field name="journal_id"/>
+                    <filter string="收款方式" name="receive_group" domain="[]" context="{'group_by': 'journal_id'}"/>
                     <group string="門市">
                         <filter string="總公司" domain="[('store_id', '=', 7)]" name="filter_store_7"/>
                         <filter string="大安店" domain="[('store_id', '=', 8)]" name="filter_store_8"/>
