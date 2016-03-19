@@ -67,6 +67,7 @@ class StockQuant(models.Model):
 
     date_last_in = fields.Date(string='最近入庫日', compute='_compute_date_last_in', help='')
     date_last_out = fields.Date(string='最近出庫日', compute='_compute_date_last_out', help='')
+    list_price_prod = fields.Float(string='標準售價', related='product_id.list_price_prod', store=True, help='')
 
 
 class StockTxtExport(models.Model):
