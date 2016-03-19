@@ -53,6 +53,8 @@ class PurchaseOrderLine(models.Model):
     date_order = fields.Datetime(string=u'訂單日期', related='order_id.date_order', store=True, help='')
     note = fields.Text(string=u'備註', help='')
 
+    _order = 'sequence asc'
+
     @api.model
     def create(self, vals):
         if 'product_tmpl_id' in vals:
