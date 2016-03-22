@@ -52,6 +52,7 @@ class PurchaseOrderLine(models.Model):
     product_specs_id = fields.Many2one('sale.product.specs', string=u'品规', help='')
     date_order = fields.Datetime(string=u'訂單日期', related='order_id.date_order', store=True, help='')
     note = fields.Text(string=u'備註', help='')
+    sequence = fields.Integer(default=1)
 
     _order = 'sequence asc'
 

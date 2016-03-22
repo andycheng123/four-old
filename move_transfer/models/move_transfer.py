@@ -16,11 +16,15 @@ class MoveTransfer(models.Model):
     def _get_default_src_loc(self):
         return self.env.user.default_store_id.warehouse_id.lot_stock_id
 
+    @api.model
+    def _get_today(self):
+        return fields.Date.context_today(self)
+
     name = fields.Char(string=u'單號', default='/', readonly='True', copy=False, help='')
     store_id = fields.Many2one('sale.store', string='開單門店', default=_get_default_store_id, help='')
     location_id = fields.Many2one('stock.location', string=u'來源倉庫', required='True', default=_get_default_src_loc, help='',domain=[('usage','=', 'internal')])
     location_dest_id = fields.Many2one('stock.location', string=u'目的倉庫', required='True', help='',domain=[('usage','=', 'internal')])
-    date_move = fields.Date(string='應出貨日期', required='True', default=fields.datetime.today(), help='')
+    date_move = fields.Date(string='應出貨日期', required='True', default=_get_today, help='')
     date_deliver = fields.Date(string=u'出貨日期', readonly = 'True', help='出貨日期')
     date_receive = fields.Date(string=u'收貨日期', readonly = 'True', help='收貨日期')
     state = fields.Selection([('draft', u'未出貨'), ('delivered', '已出貨'), ('done', u'完成'), ('cancel', u'取消')], string=u'狀態',
@@ -62,6 +66,7 @@ class MoveTransfer(models.Model):
     def action_deliver(self):
         for transfer in self:
             if transfer.state == 'draft':
+                transfer.create_stock_move()
                 transfer.date_deliver = fields.datetime.today()
                 transfer.state = 'delivered'
         return True
@@ -70,6 +75,7 @@ class MoveTransfer(models.Model):
     @api.multi
     def action_cancel_deliver(self):
         for transfer in self:
+            self.create_return_stock_move()
             transfer.state = 'cancel'
         return True
 
@@ -78,7 +84,6 @@ class MoveTransfer(models.Model):
     def action_confirm(self):
         for transfer in self:
             if transfer.state == 'delivered':
-                transfer.create_stock_move()
                 transfer.action_done()
                 transfer.date_receive = fields.datetime.today()
         return True
@@ -105,7 +110,6 @@ class MoveTransfer(models.Model):
 
     @api.one
     def action_cancel(self):
-        self.create_return_stock_move()
         self.state = 'cancel'
         return True
 

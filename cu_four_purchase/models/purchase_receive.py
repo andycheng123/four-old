@@ -408,8 +408,9 @@ class purchase_receive_select(models.TransientModel):
         wheres = ['m.purchase_line_id=pl.id and pl.order_id=po.id '
                   'and m.receive_line_id is null '
                   'and po.partner_id=%s '
+                  'and po.picking_type_id=%s '
                   'and m.state not in (\'done\', \'cancel\')']
-        params = [self.partner_id.id]
+        params = [self.partner_id.id, self.picking_type_id.id]
         if self.product_id:
             wheres.append('m.product_id = %s')
             params.append(self.product_id.id)

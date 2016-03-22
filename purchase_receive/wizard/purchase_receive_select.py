@@ -11,6 +11,7 @@ class purchase_receive_select(models.TransientModel):
     _name = 'purchase.receive.select'
 
     partner_id = fields.Many2one('res.partner', string='供应商', help='')
+    picking_type_id = fields.Many2one('stock.picking.type', string='Deliver To')
     product_id = fields.Many2one('product.product', string='产品', help='')
     purchase_order_id = fields.Many2one('purchase.order', string='采购订单', help='')
     date_from = fields.Date(string='日期起', help='')
@@ -21,7 +22,7 @@ class purchase_receive_select(models.TransientModel):
     def default_get(self, field_list):
         res = super(purchase_receive_select, self).default_get(field_list)
         rcv = self.env['purchase.receive'].browse(self.env.context['active_id'])
-        res.update(receive_id=rcv.id, partner_id=rcv.partner_id.id)
+        res.update(receive_id=rcv.id, partner_id=rcv.partner_id.id, picking_type_id=rcv.picking_type_id.id)
         return res
 
     @api.one
