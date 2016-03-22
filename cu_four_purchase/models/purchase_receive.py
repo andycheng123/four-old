@@ -290,12 +290,18 @@ class PurchaseReceive(models.Model):
             rtn = super(PurchaseReceive, self).confirm()
             return rtn
 
+
 class PurchaseReceiveLine(models.Model):
     _inherit = 'purchase.receive.line'
 
     price = fields.Float(related = 'product_id.list_price_prod', string = '定價', digits=dp.get_precision('Product Price'), help = '定價')
     sequence = fields.Integer(string=u'序號', readonly=True, help='')
     cost = fields.Float(string=u'成本單價', readonly=True, help=u'成本單價')
+    partner_id = fields.Many2one('res.partner', related='receive_id.partner_id', string=u'供應商', help='')
+    date_receive = fields.Date(related='receive_id.date_receive', string=u'收貨日期', help='')
+    picking_type_id = fields.Many2one('stock.picking.type', related='receive_id.picking_type_id', string=u'運送到', help='')
+    store_id = fields.Many2one('sale.store', related='receive_id.store_id', string=u'門店', help='')
+
 
     _order = 'sequence asc'
 

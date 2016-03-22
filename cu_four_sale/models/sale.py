@@ -316,5 +316,6 @@ class saleorderreceive(models.Model):
     count_period = fields.Float(string=u'刷卡期數', digits=dp.get_precision('Account'), help='')
     note = fields.Text(string=u'備註', help='')
     saleorder_id = fields.Many2one('sale.order', string=u'銷貨單', help='')
+    partner_id = fields.Many2one('res.partner', string='客户', related='saleorder_id.partner_id', store=True, help='')
     store_id = fields.Many2one('sale.store', related='saleorder_id.store_id', store=True,
                                string=u'門店', help='')

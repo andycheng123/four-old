@@ -92,6 +92,38 @@
             </field>
         </record>
 
+        <record id="purchase_receive_view_tree_inherit" model="ir.ui.view">
+            <field name="name">purchase_receive.tree</field>
+            <field name="model">purchase.receive</field>
+            <field name="inherit_id" ref="purchase_receive.view_purchase_receive_tree"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="state" position="before">
+                </field>
+            </field>
+        </record>
+
+        <record id="view_purchase_receive_search" model="ir.ui.view">
+            <field name="name">purchase.receive.search</field>
+            <field name="model">purchase.receive</field>
+            <field name="inherit_id" ref="purchase_receive.view_purchase_receive_search"/>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="picking_type_id" position="after">
+                    <filter name="deliver_da" string="大安店" domain="[('picking_type_id.warehouse_id.name','=', '大安店')]"/>
+                    <filter name="deliver_zon" string="總公司" domain="[('picking_type_id.warehouse_id.name', '=', '總公司')]"/>
+                    <filter name="deliver_jing" string="晶華店" domain="[('picking_type_id.warehouse_id.name', '=', '晶華店')]"/>
+                    <filter name="deliver_ren" string="仁愛店" domain="[('picking_type_id.warehouse_id.name', '=', '仁愛店')]"/>
+                    <filter name="deliver_yong" string="永康店" domain="[('picking_type_id.warehouse_id.name', '=', '永康店')]"/>
+                </field>
+                <group expand="0" string="Group By">
+                    <filter string="運送到" name="deliver_group" domain="[]" context="{'group_by':'picking_type_id'}"/>
+                    <filter string="狀態分組" name="state_group" domain="[]" context="{'group_by':'state'}"/>
+                </group>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="purchase_receive.act_open_purchase_receive_view">
             <field name="name">Purchase Receive</field>
             <field name="type">ir.actions.act_window</field>
@@ -118,6 +150,81 @@
                   parent="purchase.menu_procurement_management"
                   sequence="13"
                   action="act_open_purchase_receive_view"/>
+        <record id="purchase_receive_line_view_tree" model="ir.ui.view">
+            <field name="name">purchase.receive.line.tree</field>
+            <field name="model">purchase.receive.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Purchase Line">
+                    <field name="receive_id"/>
+                    <field name="partner_id"/>
+                    <field name="date_receive"/>
+                    <field name="picking_type_id"/>
+                    <field name="store_id"/>
+                    <field name="product_id"/>
+                    <field name="purchase_order_id"/>
+                    <field name="product_qty"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="purchase_receive_line_view_form" model="ir.ui.view">
+            <field name="name">purchase.receive.line.form</field>
+            <field name="model">purchase.receive.line</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Purchase Line">
+                    <sheet>
+                        <group colspan="4">
+                            <field name="receive_id"/>
+                            <field name="partner_id"/>
+                            <field name="date_receive"/>
+                            <field name="picking_type_id"/>
+                            <field name="store_id"/>
+                            <field name="product_id"/>
+                            <field name="purchase_order_id"/>
+                            <field name="product_qty"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="purchase_receive_line_view_search" model="ir.ui.view">
+            <field name="name">purchase.receive.line.search</field>
+            <field name="model">purchase.receive.line</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Purchase Line">
+                    <field name="receive_id" select="True"/>
+                    <field name="product_id" select="True"/>
+                    <field name="picking_type_id"/>
+                    <field name="store_id"/>
+                    <field name="purchase_order_id"/>
+                    <field name="partner_id"/>
+                    <field name="date_receive"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="purchase_receive_line_action">
+            <field name="name">進貨明細</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.receive.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="purchase_receive_line_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_purchase_receive_line"
+                  parent="purchase_receive.menu_purchase_query"
+                  sequence="20"
+                  action="purchase_receive_line_action"/>
 
         <record id="purchase_receive_strategy_view_tree" model="ir.ui.view">
             <field name="name">purchase.receive.strategy.tree</field>
